@@ -47,6 +47,8 @@ extern volatile char PSU_target;
 
 extern volatile unsigned char test_byte;
 
+extern volatile unsigned char SW_init;
+
 extern volatile unsigned char precalc_DMA_CH0_DESTADDR0_b1_state_equals_0;
 extern volatile unsigned char precalc_DMA_CH0_DESTADDR0_b1_state_equals_1;
 extern volatile unsigned char precalc_DMA_CH0_DESTADDR1_b1_state_equals_0;

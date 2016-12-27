@@ -46,6 +46,12 @@ volatile unsigned char precalc_DMA_CH1_DESTADDR0_b2_state_equals_1;
 volatile unsigned char precalc_DMA_CH1_DESTADDR1_b2_state_equals_0;
 volatile unsigned char precalc_DMA_CH1_DESTADDR1_b2_state_equals_1;
 
+#define TRFCNTcntSize 512
+volatile unsigned int TRFCNTcntCnt = 0;
+volatile unsigned int TRFCNTcnt[TRFCNTcntSize];
+
+volatile unsigned char SW_init = 0;
+
 
 int main(void){
 	irq_initialize_vectors();
@@ -117,32 +123,14 @@ void main_resume_action(void)
 
 void main_sof_action(void)
 {
-	switch(global_mode){
-		case 0:
-			tiny_dma_loop_mode_0();
-			break;
-		case 1:
-			tiny_dma_loop_mode_1();
-			break;
-		case 2:
-			tiny_dma_loop_mode_2();
-			break;
-		case 3:
-			tiny_dma_loop_mode_3();
-			break;
-		case 4:
-			tiny_dma_loop_mode_4();
-			break;
-		case 6:
-			tiny_dma_loop_mode_6();
-			break;
-		case 7:
-			tiny_dma_loop_mode_7();
-		break;
-		default:
-			break;
+	if(SW_init){
+		TRFCNTcnt[TRFCNTcntCnt] = DMA.CH0.TRFCNT;
+		TRFCNTcntCnt++;
+		if(TRFCNTcntCnt == TRFCNTcntSize){
+			TRFCNTcntCnt = 0;
+		}
 	}
-		usb_state = !b1_state;
+	usb_state = !usb_state;
 	return;
 }
 

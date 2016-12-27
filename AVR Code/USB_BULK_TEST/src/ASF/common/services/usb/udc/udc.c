@@ -1177,6 +1177,7 @@ static bool udc_reqvend(void){
 					tiny_adc_setup(0, 0);
 					tiny_adc_ch0setup(udd_g_ctrlreq.req.wIndex);
 					tiny_dma_set_mode_0();
+					SW_init = 1;
 					break;
 				case 1:  //Mode 1
 					tiny_adc_setup(0, 0);

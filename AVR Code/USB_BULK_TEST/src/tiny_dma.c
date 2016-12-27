@@ -32,6 +32,7 @@ void tiny_dma_flush(void){
 	
 	b1_state = 0;
 	b2_state = 0;
+	usb_state = 1;
 }
 void tiny_dma_set_mode_0(void){
 	
