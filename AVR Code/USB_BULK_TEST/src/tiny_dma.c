@@ -9,12 +9,13 @@
 #include "tiny_adc.h"
 #include "tiny_uart.h"
 #include "globals.h"
+#include <util/delay.h>
 
 
 void tiny_dma_setup(void){
 	//Turn on DMA
 	PR.PRGEN &=0b111111110; //Turn on DMA clk
-	DMA.CTRL = DMA_ENABLE_bm | DMA_PRIMODE_CH0123_gc;
+	DMA.CTRL = DMA_ENABLE_bm | DMA_PRIMODE_CH01RR23_gc;
 }
 void tiny_dma_flush(void){
 	DMA.CH0.CTRLA = 0x00;
@@ -632,108 +633,129 @@ void tiny_dma_loop_mode_7(void){
 }
 
 ISR(DMA_CH0_vect){
-		DMA.INTFLAGS = 0x01;
-		switch(global_mode){
-			case 0:
-				DMA.CH0.TRFCNT = HALFPACKET_SIZE;
-				DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
-				DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
-				//Must enable last for REPCNT won't work!
-				DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
-				b1_state = !b1_state;
-			break;
-			case 1:
-				DMA.CH0.TRFCNT = HALFPACKET_SIZE;
-				DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
-				DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
-				//Must enable last for REPCNT won't work!
-				DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
-				b1_state = !b1_state;
-			break;
-			case 2:
-				DMA.CH0.TRFCNT = HALFPACKET_SIZE;
-				DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
-				DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
-				//Must enable last for REPCNT won't work!
-				DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
-				b1_state = !b1_state;
-			break;
-			case 3:
-				DMA.CH0.TRFCNT = HALFPACKET_SIZE;
-				DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
-				DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
-				//Must enable last for REPCNT won't work!
-				DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
-				b1_state = !b1_state;
-			break;
-			case 4:
-				DMA.CH0.TRFCNT = HALFPACKET_SIZE;
-				DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
-				DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
-				//Must enable last for REPCNT won't work!
-				DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
-				b1_state = !b1_state;
-			break;
-			case 6:
-				DMA.CH0.TRFCNT = PACKET_SIZE;
-				DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
-				DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
-				//Must enable last for REPCNT won't work!
-				DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
-				b1_state = !b1_state;
-			break;
-			case 7:
-				DMA.CH0.TRFCNT = PACKET_SIZE;
-				DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
-				DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
-				//Must enable last for REPCNT won't work!
-				DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
-				b1_state = !b1_state;
-			break;
-			default:
-			////////////////////////////////////////
-			break;
+	DMA.CH0.TRFCNT = HALFPACKET_SIZE;
+	if(b1_state){
+		DMA.CH0.DESTADDR0 = precalc_DMA_CH0_DESTADDR0_b1_state_equals_1;
+		DMA.CH0.DESTADDR1 = precalc_DMA_CH0_DESTADDR1_b1_state_equals_1;
+		}	else {
+			DMA.CH0.DESTADDR0 = precalc_DMA_CH0_DESTADDR0_b1_state_equals_0;
+			DMA.CH0.DESTADDR1 = precalc_DMA_CH0_DESTADDR1_b1_state_equals_0;
 		}
+	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+	b1_state = !b1_state;
+	DMA.INTFLAGS = 0x01;
+	/*
+	switch(global_mode){
+		case 0:
+			DMA.CH0.TRFCNT = HALFPACKET_SIZE;
+			DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
+			DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
+			//Must enable last for REPCNT won't work!
+			DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+			b1_state = !b1_state;
+		break;
+		case 1:
+			DMA.CH0.TRFCNT = HALFPACKET_SIZE;
+			DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
+			DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
+			//Must enable last for REPCNT won't work!
+			DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+			b1_state = !b1_state;
+		break;
+		case 2:
+			DMA.CH0.TRFCNT = HALFPACKET_SIZE;
+			DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
+			DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
+			//Must enable last for REPCNT won't work!
+			DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+			b1_state = !b1_state;
+		break;
+		case 3:
+			DMA.CH0.TRFCNT = HALFPACKET_SIZE;
+			DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
+			DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
+			//Must enable last for REPCNT won't work!
+			DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+			b1_state = !b1_state;
+		break;
+		case 4:
+			DMA.CH0.TRFCNT = HALFPACKET_SIZE;
+			DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
+			DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
+			//Must enable last for REPCNT won't work!
+			DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+			b1_state = !b1_state;
+		break;
+		case 6:
+			DMA.CH0.TRFCNT = PACKET_SIZE;
+			DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
+			DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
+			//Must enable last for REPCNT won't work!
+			DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+			b1_state = !b1_state;
+		break;
+		case 7:
+			DMA.CH0.TRFCNT = PACKET_SIZE;
+			DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
+			DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[b1_state * PACKET_SIZE]) >> 8) & 0xFF;
+			//Must enable last for REPCNT won't work!
+			DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+			b1_state = !b1_state;
+		break;
+		default:
+		////////////////////////////////////////
+		break;
+	}*/
 }
 
 ISR(DMA_CH1_vect){
-		DMA.INTFLAGS = 0x02;
-		switch(global_mode){
-			case 0:
-			////////////////////////////////////////
-			break;
-			case 1:
-				DMA.CH1.TRFCNT = HALFPACKET_SIZE;
-				DMA.CH1.DESTADDR0 = (( (uint16_t) &isoBuf[b2_state * PACKET_SIZE + HALFPACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
-				DMA.CH1.DESTADDR1 = (( (uint16_t) &isoBuf[b2_state * PACKET_SIZE + HALFPACKET_SIZE]) >> 8) & 0xFF;
-				//Must enable last for REPCNT won't work!
-				DMA.CH1.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
-				b2_state = !b2_state;
-			break;
-			case 2:
-				DMA.CH1.TRFCNT = HALFPACKET_SIZE;
-				DMA.CH1.DESTADDR0 = (( (uint16_t) &isoBuf[b2_state * PACKET_SIZE + HALFPACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
-				DMA.CH1.DESTADDR1 = (( (uint16_t) &isoBuf[b2_state * PACKET_SIZE + HALFPACKET_SIZE]) >> 8) & 0xFF;
-				//Must enable last for REPCNT won't work!
-				DMA.CH1.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
-				b2_state = !b2_state;
-			break;
-			case 3:
-			////////////////////////////////////////
-			break;
-			case 4:
-			////////////////////////////////////////
-			break;
-			case 6:
-			////////////////////////////////////////
-			break;
-			case 7:
-			////////////////////////////////////////
-			break;
-			default:
-			////////////////////////////////////////
-			break;
-		}
+	DMA.CH1.TRFCNT = HALFPACKET_SIZE;
+	if(b2_state){
+		DMA.CH1.DESTADDR0 = precalc_DMA_CH1_DESTADDR0_b2_state_equals_1;
+		DMA.CH1.DESTADDR1 = precalc_DMA_CH1_DESTADDR1_b2_state_equals_1;
+		} else {
+			DMA.CH1.DESTADDR0 = precalc_DMA_CH1_DESTADDR0_b2_state_equals_0;
+			DMA.CH1.DESTADDR1 = precalc_DMA_CH1_DESTADDR1_b2_state_equals_0;
+	}
+	DMA.CH1.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+	b2_state = !b2_state;
+	DMA.INTFLAGS = 0x02;
+	/*switch(global_mode){
+		case 0:
+		////////////////////////////////////////
+		break;
+		case 1:
+			DMA.CH1.TRFCNT = HALFPACKET_SIZE;
+			DMA.CH1.DESTADDR0 = (( (uint16_t) &isoBuf[b2_state * PACKET_SIZE + HALFPACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
+			DMA.CH1.DESTADDR1 = (( (uint16_t) &isoBuf[b2_state * PACKET_SIZE + HALFPACKET_SIZE]) >> 8) & 0xFF;
+			//Must enable last for REPCNT won't work!
+			DMA.CH1.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+			b2_state = !b2_state;
+		break;
+		case 2:
+			DMA.CH1.TRFCNT = HALFPACKET_SIZE;
+			DMA.CH1.DESTADDR0 = (( (uint16_t) &isoBuf[b2_state * PACKET_SIZE + HALFPACKET_SIZE]) >> 0) & 0xFF;  //Dest address is isoBuf
+			DMA.CH1.DESTADDR1 = (( (uint16_t) &isoBuf[b2_state * PACKET_SIZE + HALFPACKET_SIZE]) >> 8) & 0xFF;
+			//Must enable last for REPCNT won't work!
+			DMA.CH1.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+			b2_state = !b2_state;
+		break;
+		case 3:
+		////////////////////////////////////////
+		break;
+		case 4:
+		////////////////////////////////////////
+		break;
+		case 6:
+		////////////////////////////////////////
+		break;
+		case 7:
+		////////////////////////////////////////
+		break;
+		default:
+		////////////////////////////////////////
+		break;
+	}*/
 }
 ISR(DMA_CH2_vect){
 	DMA.INTFLAGS = 0x04;

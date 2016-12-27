@@ -36,6 +36,17 @@ uint32_t debug_counter;
 
 unsigned char tripleUsbSuccess = 0;
 
+volatile unsigned char precalc_DMA_CH0_DESTADDR0_b1_state_equals_0;
+volatile unsigned char precalc_DMA_CH0_DESTADDR0_b1_state_equals_1;
+volatile unsigned char precalc_DMA_CH0_DESTADDR1_b1_state_equals_0;
+volatile unsigned char precalc_DMA_CH0_DESTADDR1_b1_state_equals_1;
+
+volatile unsigned char precalc_DMA_CH1_DESTADDR0_b2_state_equals_0;
+volatile unsigned char precalc_DMA_CH1_DESTADDR0_b2_state_equals_1;
+volatile unsigned char precalc_DMA_CH1_DESTADDR1_b2_state_equals_0;
+volatile unsigned char precalc_DMA_CH1_DESTADDR1_b2_state_equals_1;
+
+
 int main(void){
 	irq_initialize_vectors();
 	cpu_irq_enable();
@@ -54,6 +65,17 @@ int main(void){
 			
 	//USARTC0.DATA = 0x55;
 	//asm("nop");
+	
+	precalc_DMA_CH0_DESTADDR0_b1_state_equals_0 = (( (uint16_t) &isoBuf[0 * PACKET_SIZE]) >> 0) & 0xFF;
+	precalc_DMA_CH0_DESTADDR0_b1_state_equals_1 = (( (uint16_t) &isoBuf[1 * PACKET_SIZE]) >> 0) & 0xFF;
+	precalc_DMA_CH0_DESTADDR1_b1_state_equals_0 = (( (uint16_t) &isoBuf[0 * PACKET_SIZE]) >> 8) & 0xFF;
+	precalc_DMA_CH0_DESTADDR1_b1_state_equals_1 = (( (uint16_t) &isoBuf[1 * PACKET_SIZE]) >> 8) & 0xFF;
+	
+	precalc_DMA_CH1_DESTADDR0_b2_state_equals_0 = (( (uint16_t) &isoBuf[0 * PACKET_SIZE + HALFPACKET_SIZE]) >> 0) & 0xFF;
+	precalc_DMA_CH1_DESTADDR0_b2_state_equals_1 = (( (uint16_t) &isoBuf[1 * PACKET_SIZE + HALFPACKET_SIZE]) >> 0) & 0xFF;
+	precalc_DMA_CH1_DESTADDR1_b2_state_equals_0 = (( (uint16_t) &isoBuf[0 * PACKET_SIZE + HALFPACKET_SIZE]) >> 8) & 0xFF;
+	precalc_DMA_CH1_DESTADDR1_b2_state_equals_1 = (( (uint16_t) &isoBuf[1 * PACKET_SIZE + HALFPACKET_SIZE]) >> 8) & 0xFF;
+
 	
 	while (true) {
 		debug_counter++;
