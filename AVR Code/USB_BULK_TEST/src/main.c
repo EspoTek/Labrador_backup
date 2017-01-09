@@ -10,6 +10,7 @@
 #include "tiny_dac.h"
 #include "tiny_uart.h"
 #include "tiny_dig.h"
+#include "tiny_calibration.h"
 
 volatile bool main_b_vendor_enable = false;
 
@@ -35,6 +36,9 @@ volatile unsigned char test_byte = 123;
 uint32_t debug_counter;
 
 unsigned char tripleUsbSuccess = 0;
+
+unsigned char firstFrame = 0;
+unsigned char tcinit = 0;
 
 int main(void){
 	irq_initialize_vectors();
@@ -95,38 +99,25 @@ void main_resume_action(void)
 
 void main_sof_action(void)
 {
-	switch(global_mode){
-		case 0:
-			tiny_dma_loop_mode_0();
-			break;
-		case 1:
-			tiny_dma_loop_mode_1();
-			break;
-		case 2:
-			tiny_dma_loop_mode_2();
-			break;
-		case 3:
-			tiny_dma_loop_mode_3();
-			break;
-		case 4:
-			tiny_dma_loop_mode_4();
-			break;
-		case 6:
-			tiny_dma_loop_mode_6();
-			break;
-		case 7:
-			tiny_dma_loop_mode_7();
-		break;
-		default:
-			break;
+	if(firstFrame){
+
+		tiny_calibration_init();
+		firstFrame = 0;
+		tcinit = 1;
 	}
-		usb_state = !b1_state;
+	else{
+		if(tcinit){
+			asm("nop");
+		}
+	}
+	usb_state = !b1_state;
 	return;
 }
 
 bool main_vendor_enable(void)
 {
 	main_b_vendor_enable = true;
+	firstFrame = 1;
 	udi_vendor_iso_in_run((uint8_t *)&isoBuf[0], PACKET_SIZE, iso_callback);
 	udi_vendor_iso_in_run2((uint8_t *)&isoBuf[250], PACKET_SIZE, iso_callback2);
 	udi_vendor_iso_in_run3((uint8_t *)&isoBuf[500], PACKET_SIZE, iso_callback3);

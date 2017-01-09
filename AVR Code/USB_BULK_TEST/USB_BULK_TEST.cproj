@@ -348,6 +348,12 @@
     <Folder Include="src\config\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\tiny_calibration.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\tiny_calibration.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\tiny_dig.c">
       <SubType>compile</SubType>
     </Compile>
