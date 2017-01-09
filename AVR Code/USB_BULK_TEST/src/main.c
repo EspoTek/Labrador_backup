@@ -43,7 +43,32 @@ unsigned char tcinit = 0;
 int main(void){
 	irq_initialize_vectors();
 	cpu_irq_enable();
-	sysclk_init();
+//	sysclk_init();
+
+	
+	//Set up 48MHz DFLL for USB.
+	OSC.DFLLCTRL = OSC_RC32MCREF_USBSOF_gc;
+	DFLLRC32M.CALB = ReadCalibrationByte(offsetof(NVM_PROD_SIGNATURES_t, USBRCOSC)); //THIS is the val for 48MHz.  RCOSC32M is for a 32MHz calibration.  That makes a lot of sense now...
+	DFLLRC32M.COMP2 = 0xBB;
+	DFLLRC32M.COMP1= 0x80;  //0xBB80 = 48,000.  
+	DFLLRC32M.CTRL = 0x01; //Enable
+		
+	CCP = CCP_IOREG_gc;
+	CLK.PSCTRL = CLK_PSADIV_2_gc | CLK_PSBCDIV_1_1_gc;  //All peripheral clocks = CLKsys / 2.
+	//CLK.USBCTRL handled by udc
+	OSC.CTRL = OSC_RC32MEN_bm | OSC_RC2MEN_bm;  //Enable 2MHz, 32MHz references.
+	while(OSC.STATUS != (OSC_RC32MRDY_bm | OSC_RC2MRDY_bm)); //Wait for them all to be ready before continuing
+	
+	//4 step process from ASF manual.  Puts a 48MHz clock on the PLL output
+	OSC.CTRL |= OSC_RC2MEN_bm;  //1. Enable reference clock source.
+	OSC.PLLCTRL = OSC_PLLSRC_RC2M_gc | 24; //2. Set the multiplication factor and select the clock reference for the PLL.
+	while(!(OSC.STATUS & OSC_RC2MRDY_bm)); //3. Wait until the clock reference source is stable.
+	OSC.CTRL |= OSC_PLLEN_bm; //4. Enable the PLL
+	
+	//Move CPU + Peripherals to 48MHz clock.
+	CCP = CCP_IOREG_gc;
+	CLK.CTRL = CLK_SCLKSEL_RC32M_gc;
+	
 	board_init();
 	udc_start();
 	tiny_dac_setup();
@@ -58,6 +83,7 @@ int main(void){
 			
 	//USARTC0.DATA = 0x55;
 	//asm("nop");
+
 	
 	while (true) {
 		debug_counter++;
