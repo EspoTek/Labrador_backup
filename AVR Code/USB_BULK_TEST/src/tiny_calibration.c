@@ -36,7 +36,7 @@ tiny_calibration_init(){
 		CLK.CTRL = CLK_SCLKSEL_PLL_gc;
 		
 		//DFLLRC2M.CALB -= 1;
-		//DFLLRC2M.CALA -= 21;
+		DFLLRC2M.CALA -= 21;
 		return;
 }
 
@@ -54,11 +54,9 @@ void tiny_calibration_every_sof(){
 	unsigned int cnt = TC_CALI.CNT;
 	int gradient = cnt - last_val;
 	
-	//Unsafe increment/decrement!!
 	if(cnt < 12000) tiny_calibration_safe_add(-1);
 	if(cnt > 12000) tiny_calibration_safe_add(1);
-	tiny_calibration_safe_add(-gradient/64);
-	//tiny_calibration_safe_add(-15);
+	tiny_calibration_safe_add(gradient/128);
 	
 	last_val = cnt;
 	//DFLLRC2M.CALB += ((TC_CALI.CNT < 12000) ? 1 : -1 );

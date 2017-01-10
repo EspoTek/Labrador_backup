@@ -19,17 +19,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00001d9a  00000000  00000000  0000eb03  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00009515  00000000  00000000  0001089d  2**0
+  8 .debug_line   0000951b  00000000  00000000  0001089d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000b6c  00000000  00000000  00019db4  2**2
+  9 .debug_frame  00000b6c  00000000  00000000  00019db8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0002f775  00000000  00000000  0001a920  2**0
+ 10 .debug_str    0002f775  00000000  00000000  0001a924  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000255b  00000000  00000000  0004a095  2**0
+ 11 .debug_loc    0000255b  00000000  00000000  0004a099  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000420  00000000  00000000  0004c5f0  2**3
+ 12 .debug_ranges 00000420  00000000  00000000  0004c5f8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  0000bc30  00000000  00000000  0004ca10  2**0
+ 13 .debug_macro  0000bc30  00000000  00000000  0004ca18  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -453,225 +453,223 @@ tiny_calibration_init(){
      2f8:	80 93 40 00 	sts	0x0040, r24	; 0x800040 <__TEXT_REGION_LENGTH__+0x700040>
 		
 		//DFLLRC2M.CALB -= 1;
-		//DFLLRC2M.CALA -= 21;
+		DFLLRC2M.CALA -= 21;
+     2fc:	e8 e6       	ldi	r30, 0x68	; 104
+     2fe:	f0 e0       	ldi	r31, 0x00	; 0
+     300:	82 81       	ldd	r24, Z+2	; 0x02
+     302:	85 51       	subi	r24, 0x15	; 21
+     304:	82 83       	std	Z+2, r24	; 0x02
 		return;
 }
-     2fc:	df 91       	pop	r29
-     2fe:	cf 91       	pop	r28
-     300:	1f 91       	pop	r17
-     302:	08 95       	ret
+     306:	df 91       	pop	r29
+     308:	cf 91       	pop	r28
+     30a:	1f 91       	pop	r17
+     30c:	08 95       	ret
 
-00000304 <tiny_calibration_first_sof>:
+0000030e <tiny_calibration_first_sof>:
 
 tiny_calibration_first_sof(){
 		PR.PRPE &= 0b11111110;
-     304:	e0 e7       	ldi	r30, 0x70	; 112
-     306:	f0 e0       	ldi	r31, 0x00	; 0
-     308:	85 81       	ldd	r24, Z+5	; 0x05
-     30a:	8e 7f       	andi	r24, 0xFE	; 254
-     30c:	85 83       	std	Z+5, r24	; 0x05
+     30e:	e0 e7       	ldi	r30, 0x70	; 112
+     310:	f0 e0       	ldi	r31, 0x00	; 0
+     312:	85 81       	ldd	r24, Z+5	; 0x05
+     314:	8e 7f       	andi	r24, 0xFE	; 254
+     316:	85 83       	std	Z+5, r24	; 0x05
 		TC_CALI.PER = 24000;
-     30e:	e0 e0       	ldi	r30, 0x00	; 0
-     310:	fa e0       	ldi	r31, 0x0A	; 10
-     312:	80 ec       	ldi	r24, 0xC0	; 192
-     314:	9d e5       	ldi	r25, 0x5D	; 93
-     316:	86 a3       	std	Z+38, r24	; 0x26
-     318:	97 a3       	std	Z+39, r25	; 0x27
+     318:	e0 e0       	ldi	r30, 0x00	; 0
+     31a:	fa e0       	ldi	r31, 0x0A	; 10
+     31c:	80 ec       	ldi	r24, 0xC0	; 192
+     31e:	9d e5       	ldi	r25, 0x5D	; 93
+     320:	86 a3       	std	Z+38, r24	; 0x26
+     322:	97 a3       	std	Z+39, r25	; 0x27
 		TC_CALI.CNT = 12000;
-     31a:	80 ee       	ldi	r24, 0xE0	; 224
-     31c:	9e e2       	ldi	r25, 0x2E	; 46
-     31e:	80 a3       	std	Z+32, r24	; 0x20
-     320:	91 a3       	std	Z+33, r25	; 0x21
+     324:	80 ee       	ldi	r24, 0xE0	; 224
+     326:	9e e2       	ldi	r25, 0x2E	; 46
+     328:	80 a3       	std	Z+32, r24	; 0x20
+     32a:	91 a3       	std	Z+33, r25	; 0x21
 		TC_CALI.CTRLA = TC_CLKSEL_DIV1_gc;
-     322:	81 e0       	ldi	r24, 0x01	; 1
-     324:	80 83       	st	Z, r24
-     326:	08 95       	ret
+     32c:	81 e0       	ldi	r24, 0x01	; 1
+     32e:	80 83       	st	Z, r24
+     330:	08 95       	ret
 
-00000328 <tiny_calibration_safe_add>:
+00000332 <tiny_calibration_safe_add>:
 
 volatile unsigned int calTemp;
 void tiny_calibration_safe_add(int rawValue){
 	unsigned int addValue;
 	unsigned char subtract;
 	if(rawValue == 0){
-     328:	00 97       	sbiw	r24, 0x00	; 0
-     32a:	09 f4       	brne	.+2      	; 0x32e <tiny_calibration_safe_add+0x6>
-     32c:	71 c0       	rjmp	.+226    	; 0x410 <__FUSE_REGION_LENGTH__+0x10>
+     332:	00 97       	sbiw	r24, 0x00	; 0
+     334:	09 f4       	brne	.+2      	; 0x338 <tiny_calibration_safe_add+0x6>
+     336:	71 c0       	rjmp	.+226    	; 0x41a <__FUSE_REGION_LENGTH__+0x1a>
 		return;
 	}
 	if(rawValue > 0){
-     32e:	0c f0       	brlt	.+2      	; 0x332 <tiny_calibration_safe_add+0xa>
+     338:	0c f0       	brlt	.+2      	; 0x33c <tiny_calibration_safe_add+0xa>
 		addValue = (unsigned int) rawValue;
-     330:	9c 01       	movw	r18, r24
+     33a:	9c 01       	movw	r18, r24
 		subtract = 0;
 	}
 	if(rawValue < 0){
-     332:	99 23       	and	r25, r25
-     334:	34 f4       	brge	.+12     	; 0x342 <tiny_calibration_safe_add+0x1a>
+     33c:	99 23       	and	r25, r25
+     33e:	34 f4       	brge	.+12     	; 0x34c <tiny_calibration_safe_add+0x1a>
 		rawValue = -rawValue;
-     336:	22 27       	eor	r18, r18
-     338:	33 27       	eor	r19, r19
-     33a:	28 1b       	sub	r18, r24
-     33c:	39 0b       	sbc	r19, r25
+     340:	22 27       	eor	r18, r18
+     342:	33 27       	eor	r19, r19
+     344:	28 1b       	sub	r18, r24
+     346:	39 0b       	sbc	r19, r25
 		addValue = rawValue;
 		subtract = 1;
-     33e:	51 e0       	ldi	r21, 0x01	; 1
-     340:	01 c0       	rjmp	.+2      	; 0x344 <tiny_calibration_safe_add+0x1c>
-     342:	50 e0       	ldi	r21, 0x00	; 0
+     348:	51 e0       	ldi	r21, 0x01	; 1
+     34a:	01 c0       	rjmp	.+2      	; 0x34e <tiny_calibration_safe_add+0x1c>
+     34c:	50 e0       	ldi	r21, 0x00	; 0
 	}
 	calTemp = DFLLRC2M.CALB;
-     344:	e8 e6       	ldi	r30, 0x68	; 104
-     346:	f0 e0       	ldi	r31, 0x00	; 0
-     348:	83 81       	ldd	r24, Z+3	; 0x03
-     34a:	90 e0       	ldi	r25, 0x00	; 0
-     34c:	80 93 5d 22 	sts	0x225D, r24	; 0x80225d <calTemp>
-     350:	90 93 5e 22 	sts	0x225E, r25	; 0x80225e <calTemp+0x1>
+     34e:	e8 e6       	ldi	r30, 0x68	; 104
+     350:	f0 e0       	ldi	r31, 0x00	; 0
+     352:	83 81       	ldd	r24, Z+3	; 0x03
+     354:	90 e0       	ldi	r25, 0x00	; 0
+     356:	80 93 5d 22 	sts	0x225D, r24	; 0x80225d <calTemp>
+     35a:	90 93 5e 22 	sts	0x225E, r25	; 0x80225e <calTemp+0x1>
 	calTemp = calTemp << 7;
-     354:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
-     358:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
-     35c:	96 95       	lsr	r25
-     35e:	98 2f       	mov	r25, r24
-     360:	88 27       	eor	r24, r24
-     362:	97 95       	ror	r25
-     364:	87 95       	ror	r24
-     366:	80 93 5d 22 	sts	0x225D, r24	; 0x80225d <calTemp>
-     36a:	90 93 5e 22 	sts	0x225E, r25	; 0x80225e <calTemp+0x1>
+     35e:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
+     362:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
+     366:	96 95       	lsr	r25
+     368:	98 2f       	mov	r25, r24
+     36a:	88 27       	eor	r24, r24
+     36c:	97 95       	ror	r25
+     36e:	87 95       	ror	r24
+     370:	80 93 5d 22 	sts	0x225D, r24	; 0x80225d <calTemp>
+     374:	90 93 5e 22 	sts	0x225E, r25	; 0x80225e <calTemp+0x1>
 	calTemp += DFLLRC2M.CALA;
-     36e:	42 81       	ldd	r20, Z+2	; 0x02
-     370:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
-     374:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
-     378:	84 0f       	add	r24, r20
-     37a:	91 1d       	adc	r25, r1
-     37c:	80 93 5d 22 	sts	0x225D, r24	; 0x80225d <calTemp>
-     380:	90 93 5e 22 	sts	0x225E, r25	; 0x80225e <calTemp+0x1>
+     378:	42 81       	ldd	r20, Z+2	; 0x02
+     37a:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
+     37e:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
+     382:	84 0f       	add	r24, r20
+     384:	91 1d       	adc	r25, r1
+     386:	80 93 5d 22 	sts	0x225D, r24	; 0x80225d <calTemp>
+     38a:	90 93 5e 22 	sts	0x225E, r25	; 0x80225e <calTemp+0x1>
 	asm("nop");
-     384:	00 00       	nop
+     38e:	00 00       	nop
 	if(calTemp < addValue){
-     386:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
-     38a:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
-     38e:	82 17       	cp	r24, r18
-     390:	93 07       	cpc	r25, r19
-     392:	28 f4       	brcc	.+10     	; 0x39e <tiny_calibration_safe_add+0x76>
+     390:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
+     394:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
+     398:	82 17       	cp	r24, r18
+     39a:	93 07       	cpc	r25, r19
+     39c:	28 f4       	brcc	.+10     	; 0x3a8 <tiny_calibration_safe_add+0x76>
 		calTemp=0;
-     394:	10 92 5d 22 	sts	0x225D, r1	; 0x80225d <calTemp>
-     398:	10 92 5e 22 	sts	0x225E, r1	; 0x80225e <calTemp+0x1>
+     39e:	10 92 5d 22 	sts	0x225D, r1	; 0x80225d <calTemp>
+     3a2:	10 92 5e 22 	sts	0x225E, r1	; 0x80225e <calTemp+0x1>
 		return;
-     39c:	08 95       	ret
+     3a6:	08 95       	ret
 	}
 	if((calTemp + addValue) > 0x1fff){
-     39e:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
-     3a2:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
-     3a6:	82 0f       	add	r24, r18
-     3a8:	93 1f       	adc	r25, r19
-     3aa:	81 15       	cp	r24, r1
-     3ac:	90 42       	sbci	r25, 0x20	; 32
-     3ae:	38 f0       	brcs	.+14     	; 0x3be <tiny_calibration_safe_add+0x96>
+     3a8:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
+     3ac:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
+     3b0:	82 0f       	add	r24, r18
+     3b2:	93 1f       	adc	r25, r19
+     3b4:	81 15       	cp	r24, r1
+     3b6:	90 42       	sbci	r25, 0x20	; 32
+     3b8:	38 f0       	brcs	.+14     	; 0x3c8 <tiny_calibration_safe_add+0x96>
 		calTemp = 0x1fff;
-     3b0:	8f ef       	ldi	r24, 0xFF	; 255
-     3b2:	9f e1       	ldi	r25, 0x1F	; 31
-     3b4:	80 93 5d 22 	sts	0x225D, r24	; 0x80225d <calTemp>
-     3b8:	90 93 5e 22 	sts	0x225E, r25	; 0x80225e <calTemp+0x1>
+     3ba:	8f ef       	ldi	r24, 0xFF	; 255
+     3bc:	9f e1       	ldi	r25, 0x1F	; 31
+     3be:	80 93 5d 22 	sts	0x225D, r24	; 0x80225d <calTemp>
+     3c2:	90 93 5e 22 	sts	0x225E, r25	; 0x80225e <calTemp+0x1>
 		return;
-     3bc:	08 95       	ret
+     3c6:	08 95       	ret
 	}
 	if(subtract){
-     3be:	55 23       	and	r21, r21
-     3c0:	59 f0       	breq	.+22     	; 0x3d8 <tiny_calibration_safe_add+0xb0>
+     3c8:	55 23       	and	r21, r21
+     3ca:	59 f0       	breq	.+22     	; 0x3e2 <tiny_calibration_safe_add+0xb0>
 		calTemp -= addValue;
-     3c2:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
-     3c6:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
-     3ca:	82 1b       	sub	r24, r18
-     3cc:	93 0b       	sbc	r25, r19
-     3ce:	80 93 5d 22 	sts	0x225D, r24	; 0x80225d <calTemp>
-     3d2:	90 93 5e 22 	sts	0x225E, r25	; 0x80225e <calTemp+0x1>
-     3d6:	0a c0       	rjmp	.+20     	; 0x3ec <tiny_calibration_safe_add+0xc4>
+     3cc:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
+     3d0:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
+     3d4:	82 1b       	sub	r24, r18
+     3d6:	93 0b       	sbc	r25, r19
+     3d8:	80 93 5d 22 	sts	0x225D, r24	; 0x80225d <calTemp>
+     3dc:	90 93 5e 22 	sts	0x225E, r25	; 0x80225e <calTemp+0x1>
+     3e0:	0a c0       	rjmp	.+20     	; 0x3f6 <tiny_calibration_safe_add+0xc4>
 	}
 	else{
 		calTemp += addValue;
-     3d8:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
-     3dc:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
-     3e0:	28 0f       	add	r18, r24
-     3e2:	39 1f       	adc	r19, r25
-     3e4:	20 93 5d 22 	sts	0x225D, r18	; 0x80225d <calTemp>
-     3e8:	30 93 5e 22 	sts	0x225E, r19	; 0x80225e <calTemp+0x1>
+     3e2:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
+     3e6:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
+     3ea:	28 0f       	add	r18, r24
+     3ec:	39 1f       	adc	r19, r25
+     3ee:	20 93 5d 22 	sts	0x225D, r18	; 0x80225d <calTemp>
+     3f2:	30 93 5e 22 	sts	0x225E, r19	; 0x80225e <calTemp+0x1>
 	}
 	DFLLRC2M.CALA = calTemp & 0x7f;
-     3ec:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
-     3f0:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
-     3f4:	8f 77       	andi	r24, 0x7F	; 127
-     3f6:	e8 e6       	ldi	r30, 0x68	; 104
-     3f8:	f0 e0       	ldi	r31, 0x00	; 0
-     3fa:	82 83       	std	Z+2, r24	; 0x02
+     3f6:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
+     3fa:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
+     3fe:	8f 77       	andi	r24, 0x7F	; 127
+     400:	e8 e6       	ldi	r30, 0x68	; 104
+     402:	f0 e0       	ldi	r31, 0x00	; 0
+     404:	82 83       	std	Z+2, r24	; 0x02
 	DFLLRC2M.CALB = calTemp >> 7;	
-     3fc:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
-     400:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
-     404:	88 0f       	add	r24, r24
-     406:	89 2f       	mov	r24, r25
-     408:	88 1f       	adc	r24, r24
-     40a:	99 0b       	sbc	r25, r25
-     40c:	91 95       	neg	r25
-     40e:	83 83       	std	Z+3, r24	; 0x03
-     410:	08 95       	ret
+     406:	80 91 5d 22 	lds	r24, 0x225D	; 0x80225d <calTemp>
+     40a:	90 91 5e 22 	lds	r25, 0x225E	; 0x80225e <calTemp+0x1>
+     40e:	88 0f       	add	r24, r24
+     410:	89 2f       	mov	r24, r25
+     412:	88 1f       	adc	r24, r24
+     414:	99 0b       	sbc	r25, r25
+     416:	91 95       	neg	r25
+     418:	83 83       	std	Z+3, r24	; 0x03
+     41a:	08 95       	ret
 
-00000412 <tiny_calibration_every_sof>:
+0000041c <tiny_calibration_every_sof>:
 		return;
 }
 
 volatile unsigned int last_val = 12000;
 
 void tiny_calibration_every_sof(){
-     412:	0f 93       	push	r16
-     414:	1f 93       	push	r17
-     416:	cf 93       	push	r28
-     418:	df 93       	push	r29
+     41c:	0f 93       	push	r16
+     41e:	1f 93       	push	r17
+     420:	cf 93       	push	r28
+     422:	df 93       	push	r29
 	unsigned int cnt = TC_CALI.CNT;
-     41a:	00 91 20 0a 	lds	r16, 0x0A20	; 0x800a20 <__TEXT_REGION_LENGTH__+0x700a20>
-     41e:	10 91 21 0a 	lds	r17, 0x0A21	; 0x800a21 <__TEXT_REGION_LENGTH__+0x700a21>
+     424:	c0 91 20 0a 	lds	r28, 0x0A20	; 0x800a20 <__TEXT_REGION_LENGTH__+0x700a20>
+     428:	d0 91 21 0a 	lds	r29, 0x0A21	; 0x800a21 <__TEXT_REGION_LENGTH__+0x700a21>
 	int gradient = cnt - last_val;
-     422:	80 91 00 20 	lds	r24, 0x2000	; 0x802000 <__data_start>
-     426:	90 91 01 20 	lds	r25, 0x2001	; 0x802001 <__data_start+0x1>
-     42a:	e8 01       	movw	r28, r16
-     42c:	c8 1b       	sub	r28, r24
-     42e:	d9 0b       	sbc	r29, r25
+     42c:	80 91 00 20 	lds	r24, 0x2000	; 0x802000 <__data_start>
+     430:	90 91 01 20 	lds	r25, 0x2001	; 0x802001 <__data_start+0x1>
+     434:	8e 01       	movw	r16, r28
+     436:	08 1b       	sub	r16, r24
+     438:	19 0b       	sbc	r17, r25
 	
-	//Unsafe increment/decrement!!
 	if(cnt < 12000) tiny_calibration_safe_add(-1);
-     430:	00 3e       	cpi	r16, 0xE0	; 224
-     432:	8e e2       	ldi	r24, 0x2E	; 46
-     434:	18 07       	cpc	r17, r24
-     436:	18 f4       	brcc	.+6      	; 0x43e <tiny_calibration_every_sof+0x2c>
-     438:	8f ef       	ldi	r24, 0xFF	; 255
-     43a:	9f ef       	ldi	r25, 0xFF	; 255
-     43c:	75 df       	rcall	.-278    	; 0x328 <tiny_calibration_safe_add>
+     43a:	c0 3e       	cpi	r28, 0xE0	; 224
+     43c:	8e e2       	ldi	r24, 0x2E	; 46
+     43e:	d8 07       	cpc	r29, r24
+     440:	18 f4       	brcc	.+6      	; 0x448 <tiny_calibration_every_sof+0x2c>
+     442:	8f ef       	ldi	r24, 0xFF	; 255
+     444:	9f ef       	ldi	r25, 0xFF	; 255
+     446:	75 df       	rcall	.-278    	; 0x332 <tiny_calibration_safe_add>
 	if(cnt > 12000) tiny_calibration_safe_add(1);
-     43e:	01 3e       	cpi	r16, 0xE1	; 225
-     440:	8e e2       	ldi	r24, 0x2E	; 46
-     442:	18 07       	cpc	r17, r24
-     444:	18 f0       	brcs	.+6      	; 0x44c <tiny_calibration_every_sof+0x3a>
-     446:	81 e0       	ldi	r24, 0x01	; 1
-     448:	90 e0       	ldi	r25, 0x00	; 0
-     44a:	6e df       	rcall	.-292    	; 0x328 <tiny_calibration_safe_add>
-	tiny_calibration_safe_add(-gradient/64);
-     44c:	88 27       	eor	r24, r24
-     44e:	99 27       	eor	r25, r25
-     450:	8c 1b       	sub	r24, r28
-     452:	9d 0b       	sbc	r25, r29
-     454:	0a f4       	brpl	.+2      	; 0x458 <tiny_calibration_every_sof+0x46>
-     456:	cf 96       	adiw	r24, 0x3f	; 63
-     458:	08 2e       	mov	r0, r24
-     45a:	89 2f       	mov	r24, r25
-     45c:	00 0c       	add	r0, r0
-     45e:	88 1f       	adc	r24, r24
-     460:	99 0b       	sbc	r25, r25
-     462:	00 0c       	add	r0, r0
+     448:	c1 3e       	cpi	r28, 0xE1	; 225
+     44a:	8e e2       	ldi	r24, 0x2E	; 46
+     44c:	d8 07       	cpc	r29, r24
+     44e:	18 f0       	brcs	.+6      	; 0x456 <tiny_calibration_every_sof+0x3a>
+     450:	81 e0       	ldi	r24, 0x01	; 1
+     452:	90 e0       	ldi	r25, 0x00	; 0
+     454:	6e df       	rcall	.-292    	; 0x332 <tiny_calibration_safe_add>
+	tiny_calibration_safe_add(gradient/128);
+     456:	c8 01       	movw	r24, r16
+     458:	99 23       	and	r25, r25
+     45a:	14 f4       	brge	.+4      	; 0x460 <tiny_calibration_every_sof+0x44>
+     45c:	81 58       	subi	r24, 0x81	; 129
+     45e:	9f 4f       	sbci	r25, 0xFF	; 255
+     460:	88 0f       	add	r24, r24
+     462:	89 2f       	mov	r24, r25
      464:	88 1f       	adc	r24, r24
-     466:	99 1f       	adc	r25, r25
-     468:	5f df       	rcall	.-322    	; 0x328 <tiny_calibration_safe_add>
-	//tiny_calibration_safe_add(-15);
+     466:	99 0b       	sbc	r25, r25
+     468:	64 df       	rcall	.-312    	; 0x332 <tiny_calibration_safe_add>
 	
 	last_val = cnt;
-     46a:	00 93 00 20 	sts	0x2000, r16	; 0x802000 <__data_start>
-     46e:	10 93 01 20 	sts	0x2001, r17	; 0x802001 <__data_start+0x1>
+     46a:	c0 93 00 20 	sts	0x2000, r28	; 0x802000 <__data_start>
+     46e:	d0 93 01 20 	sts	0x2001, r29	; 0x802001 <__data_start+0x1>
 	//DFLLRC2M.CALB += ((TC_CALI.CNT < 12000) ? 1 : -1 );
 	return;
 }
@@ -881,7 +879,7 @@ void main_sof_action(void)
      572:	88 23       	and	r24, r24
      574:	39 f0       	breq	.+14     	; 0x584 <main_sof_action+0x16>
 		tiny_calibration_first_sof();
-     576:	c6 de       	rcall	.-628    	; 0x304 <tiny_calibration_first_sof>
+     576:	cb de       	rcall	.-618    	; 0x30e <tiny_calibration_first_sof>
 		firstFrame = 0;
      578:	10 92 b9 20 	sts	0x20B9, r1	; 0x8020b9 <firstFrame>
 		tcinit = 1;
@@ -895,7 +893,7 @@ void main_sof_action(void)
      588:	88 23       	and	r24, r24
      58a:	21 f1       	breq	.+72     	; 0x5d4 <main_sof_action+0x66>
 			tiny_calibration_every_sof();
-     58c:	42 df       	rcall	.-380    	; 0x412 <tiny_calibration_every_sof>
+     58c:	47 df       	rcall	.-370    	; 0x41c <tiny_calibration_every_sof>
 			cntCnt[cntCntCnt] = TC_CALI.CNT;
      58e:	e0 91 b6 20 	lds	r30, 0x20B6	; 0x8020b6 <__data_end>
      592:	f0 91 b7 20 	lds	r31, 0x20B7	; 0x8020b7 <__data_end+0x1>

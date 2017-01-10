@@ -2241,17 +2241,17 @@ END GROUP
                 0x00000294                . = ALIGN (0x2)
  *(.text.*)
  .text.tiny_calibration_init
-                0x00000294       0x70 src/tiny_calibration.o
+                0x00000294       0x7a src/tiny_calibration.o
                 0x00000294                tiny_calibration_init
  .text.tiny_calibration_first_sof
-                0x00000304       0x24 src/tiny_calibration.o
-                0x00000304                tiny_calibration_first_sof
+                0x0000030e       0x24 src/tiny_calibration.o
+                0x0000030e                tiny_calibration_first_sof
  .text.tiny_calibration_safe_add
-                0x00000328       0xea src/tiny_calibration.o
-                0x00000328                tiny_calibration_safe_add
+                0x00000332       0xea src/tiny_calibration.o
+                0x00000332                tiny_calibration_safe_add
  .text.tiny_calibration_every_sof
-                0x00000412       0x6a src/tiny_calibration.o
-                0x00000412                tiny_calibration_every_sof
+                0x0000041c       0x60 src/tiny_calibration.o
+                0x0000041c                tiny_calibration_every_sof
  .text.tiny_dig_setup
                 0x0000047c        0xe src/tiny_dig.o
                 0x0000047c                tiny_dig_setup
@@ -2809,25 +2809,25 @@ END GROUP
  .debug_abbrev  0x000017b4       0x12 src/ASF/xmega/drivers/nvm/nvm_asm.o
  .debug_abbrev  0x000017c6      0x5d4 src/ASF/xmega/drivers/usb/usb_device.o
 
-.debug_line     0x00000000     0x9515
+.debug_line     0x00000000     0x951b
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x964 src/tiny_calibration.o
- .debug_line    0x00000964      0x7b8 src/tiny_dig.o
- .debug_line    0x0000111c      0x78d src/ASF/common/boards/user_board/init.o
- .debug_line    0x000018a9      0xa12 src/main.o
- .debug_line    0x000022bb      0x956 src/tiny_adc.o
- .debug_line    0x00002c11      0x806 src/tiny_dac.o
- .debug_line    0x00003417     0x1436 src/tiny_dma.o
- .debug_line    0x0000484d      0x8c1 src/tiny_timer.o
- .debug_line    0x0000510e      0x839 src/tiny_uart.o
- .debug_line    0x00005947      0x738 src/ASF/common/services/clock/xmega/sysclk.o
- .debug_line    0x0000607f      0x455 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
- .debug_line    0x000064d4      0x625 src/ASF/common/services/usb/class/vendor/device/udi_vendor.o
- .debug_line    0x00006af9      0x4f1 src/ASF/common/services/usb/class/vendor/device/udi_vendor_desc.o
- .debug_line    0x00006fea      0xea8 src/ASF/common/services/usb/udc/udc.o
- .debug_line    0x00007e92       0x6e src/ASF/xmega/drivers/cpu/ccp.o
- .debug_line    0x00007f00      0x11f src/ASF/xmega/drivers/nvm/nvm_asm.o
- .debug_line    0x0000801f     0x14f6 src/ASF/xmega/drivers/usb/usb_device.o
+ .debug_line    0x00000000      0x96a src/tiny_calibration.o
+ .debug_line    0x0000096a      0x7b8 src/tiny_dig.o
+ .debug_line    0x00001122      0x78d src/ASF/common/boards/user_board/init.o
+ .debug_line    0x000018af      0xa12 src/main.o
+ .debug_line    0x000022c1      0x956 src/tiny_adc.o
+ .debug_line    0x00002c17      0x806 src/tiny_dac.o
+ .debug_line    0x0000341d     0x1436 src/tiny_dma.o
+ .debug_line    0x00004853      0x8c1 src/tiny_timer.o
+ .debug_line    0x00005114      0x839 src/tiny_uart.o
+ .debug_line    0x0000594d      0x738 src/ASF/common/services/clock/xmega/sysclk.o
+ .debug_line    0x00006085      0x455 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+ .debug_line    0x000064da      0x625 src/ASF/common/services/usb/class/vendor/device/udi_vendor.o
+ .debug_line    0x00006aff      0x4f1 src/ASF/common/services/usb/class/vendor/device/udi_vendor_desc.o
+ .debug_line    0x00006ff0      0xea8 src/ASF/common/services/usb/udc/udc.o
+ .debug_line    0x00007e98       0x6e src/ASF/xmega/drivers/cpu/ccp.o
+ .debug_line    0x00007f06      0x11f src/ASF/xmega/drivers/nvm/nvm_asm.o
+ .debug_line    0x00008025     0x14f6 src/ASF/xmega/drivers/usb/usb_device.o
 
 .debug_frame    0x00000000      0xb6c
  *(.debug_frame)
