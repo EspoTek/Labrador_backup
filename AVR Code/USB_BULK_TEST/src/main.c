@@ -74,10 +74,7 @@ int main(void){
 	while(!(OSC.STATUS & OSC_PLLRDY_bm));
 	CCP = CCP_IOREG_gc;
 	CLK.CTRL = CLK_SCLKSEL_PLL_gc;
-	
-	//Calibration test
-	DFLLRC2M.CALB -= 1;
-	
+		
 	board_init();
 	udc_start();
 	tiny_dac_setup();
@@ -141,6 +138,7 @@ void main_sof_action(void)
 	}
 	else{
 		if(tcinit){
+			DFLLRC2M.CALB += ((TC_CALI.CNT < 12000) ? 1 : -1 );
 			cntCnt[cntCntCnt] = TC_CALI.CNT;
 			if(cntCntCnt == (CNT_CNT_MAX - 1)){
 				cntCntCnt = 0;
