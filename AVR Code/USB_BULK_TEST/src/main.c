@@ -37,8 +37,12 @@ uint32_t debug_counter;
 
 unsigned char tripleUsbSuccess = 0;
 
-unsigned char firstFrame = 0;
-unsigned char tcinit = 0;
+volatile unsigned char firstFrame = 0;
+volatile unsigned char tcinit = 0;
+
+#define CNT_CNT_MAX 256
+volatile unsigned short cntCnt[CNT_CNT_MAX];
+volatile unsigned short cntCntCnt = 0;
 
 int main(void){
 	irq_initialize_vectors();
@@ -61,13 +65,14 @@ int main(void){
 	
 	//4 step process from ASF manual.  Puts a 48MHz clock on the PLL output
 	OSC.CTRL |= OSC_RC2MEN_bm;  //1. Enable reference clock source.
-	OSC.PLLCTRL = OSC_PLLSRC_RC2M_gc | 24; //2. Set the multiplication factor and select the clock reference for the PLL.
+	OSC.PLLCTRL = OSC_PLLSRC_RC2M_gc | 25; //2. Set the multiplication factor and select the clock reference for the PLL.
 	while(!(OSC.STATUS & OSC_RC2MRDY_bm)); //3. Wait until the clock reference source is stable.
 	OSC.CTRL |= OSC_PLLEN_bm; //4. Enable the PLL
 	
-	//Move CPU + Peripherals to 48MHz clock.
+	//Move CPU + Peripherals to 48MHz PLLL clock.
+	while(!(OSC.STATUS & OSC_PLLRDY_bm));
 	CCP = CCP_IOREG_gc;
-	CLK.CTRL = CLK_SCLKSEL_RC32M_gc;
+	CLK.CTRL = CLK_SCLKSEL_PLL_gc;
 	
 	board_init();
 	udc_start();
@@ -126,14 +131,17 @@ void main_resume_action(void)
 void main_sof_action(void)
 {
 	if(firstFrame){
-
 		tiny_calibration_init();
 		firstFrame = 0;
 		tcinit = 1;
 	}
 	else{
 		if(tcinit){
-			asm("nop");
+			cntCnt[cntCntCnt] = TC_CALI.CNT;
+			if(cntCntCnt == (CNT_CNT_MAX - 1)){
+				cntCntCnt = 0;
+			}
+			else cntCntCnt++;
 		}
 	}
 	usb_state = !b1_state;
