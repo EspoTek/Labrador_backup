@@ -13,6 +13,7 @@
 #include <stdio.h>
 
 void tiny_calibration_init();
-
-
+void tiny_calibration_first_sof();
+void tiny_calibration_every_sof();
+void tiny_calibration_safe_add(int rawValue);
 #endif /* TINY_CALIBRATION_H_ */

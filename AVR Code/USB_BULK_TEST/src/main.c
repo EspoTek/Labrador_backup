@@ -47,33 +47,8 @@ volatile unsigned short cntCntCnt = 0;
 int main(void){
 	irq_initialize_vectors();
 	cpu_irq_enable();
-//	sysclk_init();
-
-	
-	//Set up 48MHz DFLL for USB.
-	OSC.DFLLCTRL = OSC_RC32MCREF_USBSOF_gc;
-	DFLLRC32M.CALB = ReadCalibrationByte(offsetof(NVM_PROD_SIGNATURES_t, USBRCOSC)); //THIS is the val for 48MHz.  RCOSC32M is for a 32MHz calibration.  That makes a lot of sense now...
-	DFLLRC32M.COMP2 = 0xBB;
-	DFLLRC32M.COMP1= 0x80;  //0xBB80 = 48,000.  
-	DFLLRC32M.CTRL = 0x01; //Enable
-	
-	//Turn on the 48MHz clock and scale it down to 24MHz
-	CCP = CCP_IOREG_gc;
-	CLK.PSCTRL = CLK_PSADIV_2_gc | CLK_PSBCDIV_1_1_gc;  //All peripheral clocks = CLKsys / 2.
-	//CLK.USBCTRL handled by udc
-	OSC.CTRL = OSC_RC32MEN_bm | OSC_RC2MEN_bm;  //Enable 32MHz reference.  Keep 2MHz on.
-	while(OSC.STATUS != (OSC_RC32MRDY_bm | OSC_RC2MRDY_bm)); //Wait for it to be ready before continuing		
-		
-	//4 step process from ASF manual.  Puts a 48MHz clock on the PLL output
-	OSC.CTRL |= OSC_RC2MEN_bm;  //1. Enable reference clock source.
-	OSC.PLLCTRL = OSC_PLLSRC_RC2M_gc | 24; //2. Set the multiplication factor and select the clock reference for the PLL.
-	while(!(OSC.STATUS & OSC_RC2MRDY_bm)); //3. Wait until the clock reference source is stable.
-	OSC.CTRL |= OSC_PLLEN_bm; //4. Enable the PLL
-	
-	//Move CPU + Peripherals to 48MHz PLLL clock.
-	while(!(OSC.STATUS & OSC_PLLRDY_bm));
-	CCP = CCP_IOREG_gc;
-	CLK.CTRL = CLK_SCLKSEL_PLL_gc;
+//	sysclk_init();	
+	tiny_calibration_init();
 		
 	board_init();
 	udc_start();
@@ -132,13 +107,13 @@ void main_resume_action(void)
 void main_sof_action(void)
 {
 	if(firstFrame){
-		tiny_calibration_init();
+		tiny_calibration_first_sof();
 		firstFrame = 0;
 		tcinit = 1;
 	}
 	else{
 		if(tcinit){
-			DFLLRC2M.CALB += ((TC_CALI.CNT < 12000) ? 1 : -1 );
+			tiny_calibration_every_sof();
 			cntCnt[cntCntCnt] = TC_CALI.CNT;
 			if(cntCntCnt == (CNT_CNT_MAX - 1)){
 				cntCntCnt = 0;
@@ -146,7 +121,7 @@ void main_sof_action(void)
 			else cntCntCnt++;
 		}
 	}
-	usb_state = !b1_state;
+	usb_state = !usb_state;
 	return;
 }
 
@@ -176,19 +151,19 @@ bool main_setup_in_received(void)
 }
 
 void iso_callback(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
-	udi_vendor_iso_in_run((uint8_t *)&isoBuf[usb_state * PACKET_SIZE], 250, iso_callback);
+	udi_vendor_iso_in_run((uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE], 250, iso_callback);
 	//if((int8_t) USB.FIFORP > -16) udi_vendor_iso_in_run((uint8_t *)&isoBuf[0], PACKET_SIZE, iso_callback);
 	return;
 }
 
 void iso_callback2(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
-	udi_vendor_iso_in_run2((uint8_t *)&isoBuf[usb_state * PACKET_SIZE + 250], 250, iso_callback2);
+	udi_vendor_iso_in_run2((uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE + 250], 250, iso_callback2);
 	//if((int8_t) USB.FIFORP > -16) udi_vendor_iso_in_run((uint8_t *)&isoBuf[0], PACKET_SIZE, iso_callback);
 	return;
 }
 
 void iso_callback3(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
-	udi_vendor_iso_in_run3((uint8_t *)&isoBuf[usb_state * PACKET_SIZE + 500], 250, iso_callback3);
+	udi_vendor_iso_in_run3((uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE + 500], 250, iso_callback3);
 	//if((int8_t) USB.FIFORP > -16) udi_vendor_iso_in_run((uint8_t *)&isoBuf[0], PACKET_SIZE, iso_callback);
 	return;
 }
