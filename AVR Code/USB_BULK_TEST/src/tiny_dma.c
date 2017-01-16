@@ -9,6 +9,7 @@
 #include "tiny_adc.h"
 #include "tiny_uart.h"
 #include "globals.h"
+#include "util/delay.h"
 
 
 void tiny_dma_setup(void){
@@ -91,6 +92,9 @@ void tiny_dma_set_mode_0(void){
 	DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[0]) >> 0) & 0xFF;  //Dest address is isoBuf
 	DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[0]) >> 8) & 0xFF;
 	DMA.CH0.DESTADDR2 = 0x00;
+	
+	//Wait for half a cycle, roughly.
+	//while(TC_CALI.CNT > 1);
 		
 	//Must enable last for REPCNT won't work!
 	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
@@ -632,6 +636,9 @@ void tiny_dma_set_mode_7(void){
 void tiny_dma_loop_mode_7(void){
 }
 
+
+/*
+
 ISR(DMA_CH0_vect){
 		DMA.INTFLAGS = 0x01;
 		switch(global_mode){
@@ -755,3 +762,6 @@ ISR(DMA_CH3_vect){
 	DMA.CH3.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
 	b2_state = !b2_state;
 }
+
+
+*/

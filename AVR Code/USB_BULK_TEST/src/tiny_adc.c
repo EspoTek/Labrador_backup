@@ -79,3 +79,11 @@ uint8_t ReadCalibrationByte(uint8_t index){
 
 	return( result );
 }
+
+ISR(ADCA_CH0_vect){
+	ADCA.CH0.INTFLAGS = 0x01;
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+}

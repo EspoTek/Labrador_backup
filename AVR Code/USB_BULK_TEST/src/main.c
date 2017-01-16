@@ -114,9 +114,10 @@ void main_sof_action(void)
 	else{
 		if(tcinit){
 			tiny_calibration_every_sof();
-			cntCnt[cntCntCnt] = TC_CALI.CNT;
+			cntCnt[cntCntCnt] = DMA.CH0.TRFCNT;
 			if(cntCntCnt == (CNT_CNT_MAX - 1)){
 				cntCntCnt = 0;
+				asm("nop");
 			}
 			else cntCntCnt++;
 		}
@@ -152,20 +153,19 @@ bool main_setup_in_received(void)
 
 void iso_callback(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
 	udi_vendor_iso_in_run((uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE], 250, iso_callback);
-	if((int8_t) USB.FIFORP > -16) udi_vendor_iso_in_run((uint8_t *)&isoBuf[!usb_state * HALFPACKET_SIZE], 250, iso_callback);
+	//if((int8_t) USB.FIFORP > -16) udi_vendor_iso_in_run((uint8_t *)&isoBuf[!usb_state * HALFPACKET_SIZE], 250, iso_callback);
 	return;
 }
 
 void iso_callback2(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
 	udi_vendor_iso_in_run2((uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE + 250], 250, iso_callback2);
-		if((int8_t) USB.FIFORP > -16) udi_vendor_iso_in_run((uint8_t *)&isoBuf[!usb_state * HALFPACKET_SIZE + 250], 250, iso_callback);
-
+	//if((int8_t) USB.FIFORP > -16) udi_vendor_iso_in_run((uint8_t *)&isoBuf[!usb_state * HALFPACKET_SIZE + 250], 250, iso_callback);
 	return;
 }
 
 void iso_callback3(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
 	udi_vendor_iso_in_run3((uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE + 500], 250, iso_callback3);
-	if((int8_t) USB.FIFORP > -16) udi_vendor_iso_in_run((uint8_t *)&isoBuf[!usb_state * HALFPACKET_SIZE + 500], 250, iso_callback);
+	//if((int8_t) USB.FIFORP > -16) udi_vendor_iso_in_run((uint8_t *)&isoBuf[!usb_state * HALFPACKET_SIZE + 500], 250, iso_callback);
 	return;
 }
 
