@@ -16,4 +16,5 @@ void tiny_calibration_init();
 void tiny_calibration_first_sof();
 void tiny_calibration_every_sof();
 void tiny_calibration_safe_add(int rawValue);
+int tiny_distance_from_centre(unsigned int point);
 #endif /* TINY_CALIBRATION_H_ */

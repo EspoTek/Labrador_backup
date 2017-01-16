@@ -49,17 +49,26 @@ tiny_calibration_first_sof(){
 }
 
 volatile unsigned int last_val = 12000;
+volatile int gradient;
 
+unsigned char deadTime = 0;
+volatile unsigned long outOfRange = 0;
 void tiny_calibration_every_sof(){
 	unsigned int cnt = TC_CALI.CNT;
-	int gradient = cnt - last_val;
+	gradient = cnt - last_val;
 	
-	if(cnt < 12000) tiny_calibration_safe_add(-1);
-	if(cnt > 12000) tiny_calibration_safe_add(1);
-	tiny_calibration_safe_add(gradient/128);
+	if(cnt > 12500){
+		DFLLRC2M.CALA = 39;
+	}
+	if(cnt < 11500){
+		DFLLRC2M.CALA = 43;
+	}
+	
+	if((cnt<10000) || (cnt>14000)){
+		outOfRange++;
+	}
 	
 	last_val = cnt;
-	//DFLLRC2M.CALB += ((TC_CALI.CNT < 12000) ? 1 : -1 );
 	return;
 }
 
@@ -98,5 +107,10 @@ void tiny_calibration_safe_add(int rawValue){
 		calTemp += addValue;
 	}
 	DFLLRC2M.CALA = calTemp & 0x7f;
-	DFLLRC2M.CALB = calTemp >> 7;	
+	//DFLLRC2M.CALB = calTemp >> 7;	
+	}
+
+int tiny_distance_from_centre(unsigned int point){
+	int midVal = point-12000;
+	return midVal < 0 ? -midVal : midVal;
 }
