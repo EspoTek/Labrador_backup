@@ -40,6 +40,9 @@ unsigned char tripleUsbSuccess = 0;
 volatile unsigned char firstFrame = 0;
 volatile unsigned char tcinit = 0;
 
+volatile unsigned int currentTrfcnt;
+volatile unsigned char debugOnNextEnd = 0;
+
 #define CNT_CNT_MAX 256
 volatile unsigned short cntCnt[CNT_CNT_MAX];
 volatile unsigned short cntCntCnt = 0;
@@ -117,7 +120,10 @@ void main_sof_action(void)
 			cntCnt[cntCntCnt] = DMA.CH0.TRFCNT;
 			if(cntCntCnt == (CNT_CNT_MAX - 1)){
 				cntCntCnt = 0;
-				asm("nop");
+				if(debugOnNextEnd){
+					currentTrfcnt = DMA.CH0.TRFCNT;
+					debugOnNextEnd = 0;
+				}
 			}
 			else cntCntCnt++;
 		}

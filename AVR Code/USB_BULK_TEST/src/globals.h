@@ -48,4 +48,6 @@ extern volatile char PSU_target;
 
 extern volatile unsigned char test_byte;
 
+extern volatile unsigned char debugOnNextEnd;
+
 #endif /* GLOBALS_H_ */
