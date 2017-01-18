@@ -67,7 +67,7 @@ void tiny_calibration_maintain(){
 		warmup--;  //There's a warmup period in case tiny_calibration_find_values returns outside range; it won't record out of range until this period is over.
 	}
 	else if((cnt<11000) || (cnt>13000)){
-		//This is an untested, last-ditch effort to hopefully prevent runaway due to drift over time.
+		//This is an untested, last-ditch effort to hopefully prevent runaway if there's significant drift over time.
 		calibration_values_found = 0x00;
 		outOfRange++;
 		warmup = 6;
