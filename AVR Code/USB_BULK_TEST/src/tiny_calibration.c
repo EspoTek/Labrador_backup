@@ -9,7 +9,7 @@
 #include "globals.h"
 #include "tiny_adc.h"
 
-tiny_calibration_init(){
+void tiny_calibration_init(){
 		//Set up 48MHz DFLL for USB.
 		OSC.DFLLCTRL = OSC_RC32MCREF_USBSOF_gc;
 		DFLLRC32M.CALB = ReadCalibrationByte(offsetof(NVM_PROD_SIGNATURES_t, USBRCOSC)); //THIS is the val for 48MHz.  RCOSC32M is for a 32MHz calibration.  That makes a lot of sense now...
@@ -36,7 +36,7 @@ tiny_calibration_init(){
 		CLK.CTRL = CLK_SCLKSEL_PLL_gc;
 		
 		//DFLLRC2M.CALB -= 1;
-		DFLLRC2M.CALA -= 21;
+		//DFLLRC2M.CALA -= 21;
 		return;
 }
 
@@ -48,27 +48,31 @@ tiny_calibration_first_sof(){
 		return;
 }
 
-volatile unsigned int last_val = 12000;
-volatile int gradient;
-
 unsigned char deadTime = 0;
 volatile unsigned long outOfRange = 0;
-void tiny_calibration_every_sof(){
+
+volatile unsigned char cali_value_negative_gradient;
+volatile unsigned char cali_value_positive_gradient;
+volatile unsigned char warmup = 10;
+void tiny_calibration_maintain(){
 	unsigned int cnt = TC_CALI.CNT;
-	gradient = cnt - last_val;
 	
-	if(cnt > 12500){
-		DFLLRC2M.CALA = 39;
+	if(cnt > 12000){
+		DFLLRC2M.CALA = cali_value_negative_gradient;
 	}
-	if(cnt < 11500){
-		DFLLRC2M.CALA = 43;
+	if(cnt < 12000){
+		DFLLRC2M.CALA = cali_value_positive_gradient;
 	}
-	
-	if((cnt<10000) || (cnt>14000)){
+	if(warmup){
+		warmup--;  //There's a warmup period in case tiny_calibration_find_values returns outside range; it won't record out of range until this period is over.
+	}
+	else if((cnt<11000) || (cnt>13000)){
+		//This is an untested, last-ditch effort to hopefully prevent runaway due to drift over time.
+		calibration_values_found = 0x00;
 		outOfRange++;
+		warmup = 6;
 	}
 	
-	last_val = cnt;
 	return;
 }
 
@@ -113,4 +117,49 @@ void tiny_calibration_safe_add(int rawValue){
 int tiny_distance_from_centre(unsigned int point){
 	int midVal = point-12000;
 	return midVal < 0 ? -midVal : midVal;
+}
+
+volatile unsigned char calibration_values_found = 0x00;
+volatile unsigned int last_val = 12000;
+volatile int gradient;
+volatile unsigned int calChange;
+#define NUM_INAROW 12
+volatile unsigned char inarow = NUM_INAROW;
+
+void tiny_calibration_find_values(){
+	unsigned int cnt = TC_CALI.CNT;
+	gradient = cnt - last_val;
+	
+	//Find the negative value first.
+	if(calibration_values_found == 0x00){
+		if((gradient < -50) && (gradient > -150)){
+			if(inarow){
+				inarow--;
+				}else{
+				cali_value_negative_gradient = DFLLRC2M.CALA;
+				calibration_values_found = 0x01;
+				inarow = NUM_INAROW;
+			}
+		}
+		else{
+			inarow = NUM_INAROW;
+			calChange = gradient < -150 ? 1 : -1;
+			calChange -= gradient / 48;
+			tiny_calibration_safe_add(calChange);
+		}
+	}
+	
+	//Search for the positive gradient
+	if(calibration_values_found == 0x01){
+		if(gradient > 50){
+			if(inarow){
+				inarow--;
+				} else{
+				cali_value_positive_gradient = DFLLRC2M.CALA;
+				calibration_values_found = 0x03;
+			}
+		}
+		else tiny_calibration_safe_add((gradient > 150 ? -1 : 1));
+	}
+	last_val = cnt;
 }

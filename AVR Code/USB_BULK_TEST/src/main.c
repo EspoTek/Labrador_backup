@@ -113,10 +113,11 @@ void main_sof_action(void)
 		tiny_calibration_first_sof();
 		firstFrame = 0;
 		tcinit = 1;
+		return;
 	}
 	else{
 		if(tcinit){
-			tiny_calibration_every_sof();
+			if(calibration_values_found == 0x03) tiny_calibration_maintain(); else tiny_calibration_find_values();
 			cntCnt[cntCntCnt] = DMA.CH0.TRFCNT;
 			if(cntCntCnt == (CNT_CNT_MAX - 1)){
 				cntCntCnt = 0;
