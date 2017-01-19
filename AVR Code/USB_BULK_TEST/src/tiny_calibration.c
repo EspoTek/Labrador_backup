@@ -42,7 +42,7 @@ void tiny_calibration_init(){
 
 tiny_calibration_first_sof(){
 		PR.PRPE &= 0b11111110;
-		TC_CALI.PER = 24000;
+		TC_CALI.PER = 23999;
 		TC_CALI.CNT = 12000;
 		TC_CALI.CTRLA = TC_CLKSEL_DIV1_gc;
 		return;

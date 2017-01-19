@@ -46,6 +46,8 @@ volatile unsigned char debugOnNextEnd = 0;
 #define CNT_CNT_MAX 256
 volatile unsigned short cntCnt[CNT_CNT_MAX];
 volatile unsigned short cntCntCnt = 0;
+#define DEBUG_DIVISION 127
+volatile unsigned char debug_divider = 0;
 
 int main(void){
 	irq_initialize_vectors();
@@ -109,27 +111,35 @@ void main_resume_action(void)
 
 void main_sof_action(void)
 {
+	cli();
 	if(firstFrame){
 		tiny_calibration_first_sof();
 		firstFrame = 0;
 		tcinit = 1;
+		sei();
 		return;
 	}
 	else{
 		if(tcinit){
 			if(calibration_values_found == 0x03) tiny_calibration_maintain(); else tiny_calibration_find_values();
-			cntCnt[cntCntCnt] = DMA.CH0.TRFCNT;
-			if(cntCntCnt == (CNT_CNT_MAX - 1)){
-				cntCntCnt = 0;
-				if(debugOnNextEnd){
-					currentTrfcnt = DMA.CH0.TRFCNT;
-					debugOnNextEnd = 0;
+			if(debug_divider == DEBUG_DIVISION){
+				debug_divider = 0;
+				cntCnt[cntCntCnt] = DMA.CH0.TRFCNT;
+				if(cntCntCnt == (CNT_CNT_MAX - 1)){
+					cntCntCnt = 0;
 				}
+				else cntCntCnt++;
 			}
-			else cntCntCnt++;
+			else debug_divider++;
 		}
 	}
+	
+	if(debugOnNextEnd){
+		currentTrfcnt = DMA.CH0.TRFCNT;
+		debugOnNextEnd = 0;
+	}
 	usb_state = !usb_state;
+	sei();
 	return;
 }
 
