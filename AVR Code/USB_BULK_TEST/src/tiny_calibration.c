@@ -73,6 +73,10 @@ void tiny_calibration_maintain(){
 		warmup = 6;
 	}
 	
+	if((median_TRFCNT == 65535) && (global_mode != 255)){
+		median_TRFCNT = DMA.CH0.TRFCNT;
+	}
+	
 	return;
 }
 
@@ -162,4 +166,47 @@ void tiny_calibration_find_values(){
 		else tiny_calibration_safe_add((gradient > 150 ? -1 : 1));
 	}
 	last_val = cnt;
+}
+
+#define LAYER2_INTERVAL 64
+#define MAXIMUM_DEVIATION 1
+volatile unsigned int layer2_counter = LAYER2_INTERVAL;
+void tiny_calibration_layer2(){
+	//Run only once every LAYER2_INTERVAL milliseconds.
+	if(layer2_counter){
+		layer2_counter--;
+		return;
+	}
+	layer2_counter = LAYER2_INTERVAL;
+	
+	//Return if a median TRFCNT hasn't been set yet.
+	if(median_TRFCNT == 65535){
+		return;
+	}
+	unsigned int TRFCNT_temp = DMA.CH0.TRFCNT;
+	if(magnitude_difference(TRFCNT_temp, median_TRFCNT) > 200){
+		TRFCNT_temp = (TRFCNT_temp + HALFPACKET_SIZE) % PACKET_SIZE;
+	}
+	if((TRFCNT_temp > median_TRFCNT) &&  (magnitude_difference(TRFCNT_temp, median_TRFCNT) > MAXIMUM_DEVIATION)){
+		TC_CALI.PERBUF = 24000;
+		return;
+	}
+	if((TRFCNT_temp < median_TRFCNT) &&  (magnitude_difference(TRFCNT_temp, median_TRFCNT) > MAXIMUM_DEVIATION)){
+		TC_CALI.PERBUF = 23999;
+		return;
+	}
+}
+
+unsigned int magnitude_difference(unsigned int a, unsigned int b){
+	if(a==b) return 0;
+	if(a>b)	return a - b;
+	if(b>a)	return b - a;
+}
+
+void tiny_calibration_synchronise_phase(unsigned int phase, unsigned int precision){
+	//Wait for the calibration timer to roughly equal a phase value, then return.
+	unsigned int maxVal = phase + precision;
+	unsigned int minVal = phase - precision;
+	while (!((TC_CALI.CNT < maxVal) && (TC_CALI.CNT > minVal)));
+	return;
 }

@@ -8,6 +8,7 @@
 #include "tiny_dma.h"
 #include "tiny_adc.h"
 #include "tiny_uart.h"
+#include "tiny_calibration.h"
 #include "globals.h"
 #include "util/delay.h"
 
@@ -35,7 +36,7 @@ void tiny_dma_flush(void){
 	usb_state = 1;
 }
 void tiny_dma_set_mode_0(void){
-	
+	cli();
 	global_mode = 0;
 	
 	tiny_dma_flush();
@@ -92,12 +93,16 @@ void tiny_dma_set_mode_0(void){
 	DMA.CH0.DESTADDR0 = (( (uint16_t) &isoBuf[0]) >> 0) & 0xFF;  //Dest address is isoBuf
 	DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[0]) >> 8) & 0xFF;
 	DMA.CH0.DESTADDR2 = 0x00;
-	
-	//Wait for half a cycle, roughly.
-	//while(TC_CALI.CNT > 1);
 		
-	//Must enable last for REPCNT won't work!
+	tiny_calibration_synchronise_phase(6000, 100);
+	
+	b1_state = 0;
+	b2_state = 0;
+	usb_state = 1;
+
+	median_TRFCNT = 65535;
 	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
+	sei();
 }
 
 void tiny_dma_loop_mode_0(void){

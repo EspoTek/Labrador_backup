@@ -50,4 +50,6 @@ extern volatile unsigned char test_byte;
 
 extern volatile unsigned char debugOnNextEnd;
 
+extern volatile unsigned int median_TRFCNT;
+
 #endif /* GLOBALS_H_ */

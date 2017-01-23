@@ -49,6 +49,8 @@ volatile unsigned short cntCntCnt = 0;
 #define DEBUG_DIVISION 127
 volatile unsigned char debug_divider = 0;
 
+volatile unsigned int median_TRFCNT = 65535;
+
 int main(void){
 	irq_initialize_vectors();
 	cpu_irq_enable();
@@ -121,7 +123,10 @@ void main_sof_action(void)
 	}
 	else{
 		if(tcinit){
-			if(calibration_values_found == 0x03) tiny_calibration_maintain(); else tiny_calibration_find_values();
+			if(calibration_values_found == 0x03){
+				tiny_calibration_maintain();
+				tiny_calibration_layer2();
+			} else tiny_calibration_find_values();
 			if(debug_divider == DEBUG_DIVISION){
 				debug_divider = 0;
 				cntCnt[cntCntCnt] = DMA.CH0.TRFCNT;
@@ -138,7 +143,7 @@ void main_sof_action(void)
 		currentTrfcnt = DMA.CH0.TRFCNT;
 		debugOnNextEnd = 0;
 	}
-	usb_state = !usb_state;
+	usb_state = (DMA.CH0.TRFCNT < 375) ? 1 : 0;
 	sei();
 	return;
 }
