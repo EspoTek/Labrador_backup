@@ -156,9 +156,9 @@ bool main_vendor_enable(void)
 {
 	main_b_vendor_enable = true;
 	firstFrame = 1;
-	udi_vendor_iso_in_run((uint8_t *)&isoBuf[0], PACKET_SIZE, iso_callback);
-	udi_vendor_iso_in_run2((uint8_t *)&isoBuf[250], PACKET_SIZE, iso_callback2);
-	udi_vendor_iso_in_run3((uint8_t *)&isoBuf[500], PACKET_SIZE, iso_callback3);
+	udi_vendor_iso_in_run((uint8_t *)&isoBuf[0], 250, iso_callback);
+	udi_vendor_iso_in_run2((uint8_t *)&isoBuf[250], 250, iso_callback2);
+	udi_vendor_iso_in_run3((uint8_t *)&isoBuf[500], 250, iso_callback3);
 	return true;
 }
 
