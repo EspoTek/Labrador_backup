@@ -94,13 +94,14 @@ void tiny_dma_set_mode_0(void){
 	DMA.CH0.DESTADDR1 = (( (uint16_t) &isoBuf[0]) >> 8) & 0xFF;
 	DMA.CH0.DESTADDR2 = 0x00;
 		
-	tiny_calibration_synchronise_phase(6000, 100);
+	tiny_calibration_synchronise_phase(500, 200);
 	
 	b1_state = 0;
 	b2_state = 0;
 	usb_state = 1;
 
 	median_TRFCNT = 65535;
+	median_TRFCNT_delay = 5; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
 	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
 	sei();
 }

@@ -9,6 +9,8 @@
 #include "globals.h"
 #include "tiny_adc.h"
 
+volatile unsigned char median_TRFCNT_delay = 255;
+
 void tiny_calibration_init(){
 		//Set up 48MHz DFLL for USB.
 		OSC.DFLLCTRL = OSC_RC32MCREF_USBSOF_gc;
@@ -74,9 +76,10 @@ void tiny_calibration_maintain(){
 	}
 	
 	if((median_TRFCNT == 65535) && (global_mode != 255)){
-		median_TRFCNT = DMA.CH0.TRFCNT;
+		if(!median_TRFCNT_delay){  
+			median_TRFCNT_delay--;  
+		} else median_TRFCNT = DMA.CH0.TRFCNT;
 	}
-	
 	return;
 }
 

@@ -114,6 +114,10 @@ void main_resume_action(void)
 void main_sof_action(void)
 {
 	cli();
+	if((DMA.CH0.TRFCNT > 325) && (DMA.CH0.TRFCNT < 425)){
+		currentTrfcnt = DMA.CH0.TRFCNT;
+		asm("nop");
+	}
 	if(firstFrame){
 		tiny_calibration_first_sof();
 		firstFrame = 0;
