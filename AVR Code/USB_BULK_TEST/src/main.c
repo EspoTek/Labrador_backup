@@ -51,6 +51,8 @@ volatile unsigned char debug_divider = 0;
 
 volatile unsigned int median_TRFCNT = 65535;
 
+volatile char debug_data[8] = "DEBUG123";
+
 int main(void){
 	irq_initialize_vectors();
 	cpu_irq_enable();

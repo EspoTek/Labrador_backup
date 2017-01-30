@@ -268,7 +268,11 @@ void genericUsbDriver::setGain(double newGain){
 }
 
 void genericUsbDriver::avrDebug(void){
-    usbSendControl(0x40, 0xa0, 0, 0, 0, NULL);
+    usbSendControl(0xc0, 0xa0, 0, 0, 8, NULL);
+    char debugBytes[9];
+    strncpy(debugBytes, (char *)inBuffer, 8);
+    debugBytes[8] = 0; //Null terminator for string.
+    qDebug() << "DEBUG INFORMATION:" << debugBytes;
 }
 
 void genericUsbDriver::saveState(int *_out_deviceMode, double *_out_scopeGain, double *_out_currentPsuVoltage, int *_out_digitalPinState){

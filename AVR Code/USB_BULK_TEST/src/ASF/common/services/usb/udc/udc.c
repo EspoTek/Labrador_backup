@@ -1093,6 +1093,7 @@ static bool udc_reqvend(void){
 	switch (udd_g_ctrlreq.req.bRequest){
 		case 0xa0: //Break!  (Debug command)
 			debugOnNextEnd = 1;
+			udd_set_setup_payload(debug_data, udd_g_ctrlreq.req.wLength);
 			//asm("nop");
 			return 1;
 		case 0xa1: //Receive waveform for signal gen
@@ -1267,7 +1268,7 @@ bool udc_process_setup(void)
 			return true;
 		}
 	}
-
+	
 	// If standard request then try to decode it in UDC
 	if (Udd_setup_type() == USB_REQ_TYPE_STANDARD) {
 		if (udc_reqstd()) {

@@ -56,6 +56,7 @@ protected:
     QTimer *isoTimer;
     unsigned char currentWriteBuffer = 0;
     unsigned long timerCount = 0;
+    unsigned char inBuffer[256];
     //Generic Functions
     virtual unsigned char usbInit(unsigned long VIDin, unsigned long PIDin) = 0;
     virtual unsigned char usbIsoInit(void) = 0;
