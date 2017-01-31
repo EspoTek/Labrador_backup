@@ -53,8 +53,6 @@ tiny_calibration_first_sof(){
 unsigned char deadTime = 0;
 volatile unsigned long outOfRange = 0;
 
-volatile unsigned char cali_value_negative_gradient;
-volatile unsigned char cali_value_positive_gradient;
 volatile unsigned char warmup = 10;
 void tiny_calibration_maintain(){
 	unsigned int cnt = TC_CALI.CNT;

@@ -270,11 +270,15 @@ void genericUsbDriver::setGain(double newGain){
 void genericUsbDriver::avrDebug(void){
     usbSendControl(0xc0, 0xa0, 0, 0, sizeof(unified_debug), NULL);
     unified_debug *udsPtr = (unified_debug *) inBuffer;
-    qDebug("%s", udsPtr->header);
     uint16_t trfcnt0 = (udsPtr->trfcntH0 << 8) + udsPtr->trfcntL0;
     uint16_t medianTrfcnt = (udsPtr->medianTrfcntH << 8) + udsPtr->medianTrfcntL;
-    qDebug("%u", trfcnt0);
-    qDebug("%u", medianTrfcnt);
+    qDebug("%s", udsPtr->header);
+    qDebug() << trfcnt0;
+    qDebug() << medianTrfcnt;
+    qDebug() << udsPtr->calValNeg;
+    qDebug() << udsPtr->calValPos;
+    qDebug() << udsPtr->CALA;
+    qDebug() << udsPtr->CALB;
 }
 
 void genericUsbDriver::saveState(int *_out_deviceMode, double *_out_scopeGain, double *_out_currentPsuVoltage, int *_out_digitalPinState){

@@ -101,7 +101,7 @@ void tiny_dma_set_mode_0(void){
 	usb_state = 1;
 
 	median_TRFCNT = 65535;
-	median_TRFCNT_delay = 5; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
+	median_TRFCNT_delay = 1; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
 	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
 	sei();
 }
