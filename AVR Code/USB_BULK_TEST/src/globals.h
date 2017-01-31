@@ -52,6 +52,7 @@ extern volatile unsigned char debugOnNextEnd;
 
 extern volatile unsigned int median_TRFCNT;
 
-extern volatile char debug_data[8];
+#include "unified_debug_structure.h"
+extern unified_debug uds;
 
 #endif /* GLOBALS_H_ */

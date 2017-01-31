@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 #include <asf.h>
+#include <string.h>
+
 #include "ui.h"
 #include "globals.h"
 #include "tiny_adc.h"
@@ -53,6 +55,8 @@ volatile unsigned int median_TRFCNT = 65535;
 
 volatile char debug_data[8] = "DEBUG123";
 
+unified_debug uds;
+
 int main(void){
 	irq_initialize_vectors();
 	cpu_irq_enable();
@@ -74,7 +78,8 @@ int main(void){
 	//USARTC0.DATA = 0x55;
 	//asm("nop");
 
-	
+	strcpy(uds.header, "debug123");
+
 	while (true) {
 		debug_counter++;
 		if(debug_counter > 100000000){
@@ -116,6 +121,11 @@ void main_resume_action(void)
 void main_sof_action(void)
 {
 	cli();
+	uds.trfcntL0 = DMA.CH0.TRFCNTL;
+	uds.trfcntH0 = DMA.CH0.TRFCNTH;
+	uds.medianTrfcntL = median_TRFCNT & 0xff;
+	uds.medianTrfcntH = (median_TRFCNT >> 8) & 0xff;
+	
 	if((DMA.CH0.TRFCNT > 325) && (DMA.CH0.TRFCNT < 425)){
 		currentTrfcnt = DMA.CH0.TRFCNT;
 		asm("nop");

@@ -42,7 +42,7 @@ src/ASF/common/services/usb/udc/udc.d \
  ../src/ASF/common/services/usb/udc/udi.h ../src/ui.h ../src/main.h \
  ../src/ASF/common/services/usb/udc/udd.h \
  ../src/ASF/common/services/usb/udc/udc.h ../src/globals.h \
- ../src/tiny_dma.h \
+ ../src/unified_debug_structure.h ../src/tiny_dma.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\4.9.2\include\stdarg.h \
  ../src/asf.h ../src/ASF/xmega/drivers/cpu/ccp.h \
@@ -158,6 +158,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../src/ASF/common/services/usb/udc/udc.h:
 
 ../src/globals.h:
+
+../src/unified_debug_structure.h:
 
 ../src/tiny_dma.h:
 

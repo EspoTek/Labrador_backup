@@ -1093,7 +1093,7 @@ static bool udc_reqvend(void){
 	switch (udd_g_ctrlreq.req.bRequest){
 		case 0xa0: //Break!  (Debug command)
 			debugOnNextEnd = 1;
-			udd_set_setup_payload(debug_data, udd_g_ctrlreq.req.wLength);
+			udd_set_setup_payload(&uds, udd_g_ctrlreq.req.wLength);
 			//asm("nop");
 			return 1;
 		case 0xa1: //Receive waveform for signal gen

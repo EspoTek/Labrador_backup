@@ -142,6 +142,7 @@ DIST          =  ui_elements\buffercontrol.h \
 		genericusbdriver.h \
 		isobufferbuffer.h \
 		q_debugstream.h \
+		unified_debug_structure.h \
 		winusbdriver.h ui_elements\buffercontrol.cpp \
 		ui_elements\cursorenabler.cpp \
 		ui_elements\deviceconnecteddisplay.cpp \
@@ -738,6 +739,7 @@ release\moc_espocombobox.cpp: C:\Qt\5.7\msvc2013_64\include\QtWidgets\QWidget \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\qeventloop.h \
 		desktop_settings.h \
 		ui_elements\buffercontrol.h \
+		unified_debug_structure.h \
 		ui_elements\espocombobox.h \
 		C:\Qt\5.7\msvc2013_64\bin\moc.exe
 	C:\Qt\5.7\msvc2013_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1800 -D_WIN32 -D_WIN64 -IC:/Qt/5.7/msvc2013_64/mkspecs/win32-msvc2013 -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/build_win" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/build_win/libusbk/includes" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/ui_elements" -IC:/Qt/5.7/msvc2013_64/include -IC:/Qt/5.7/msvc2013_64/include/QtPrintSupport -IC:/Qt/5.7/msvc2013_64/include/QtWidgets -IC:/Qt/5.7/msvc2013_64/include/QtGui -IC:/Qt/5.7/msvc2013_64/include/QtANGLE -IC:/Qt/5.7/msvc2013_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ui_elements\espocombobox.h -o release\moc_espocombobox.cpp
@@ -2260,6 +2262,7 @@ release\moc_mainwindow.cpp: C:\Qt\5.7\msvc2013_64\include\QtWidgets\QMainWindow 
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QCoreApplication \
 		desktop_settings.h \
 		ui_elements\buffercontrol.h \
+		unified_debug_structure.h \
 		ui_mainwindow.h \
 		scoperangeenterdialog.h \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QDialog \
@@ -2872,6 +2875,7 @@ release\moc_isodriver.cpp: C:\Qt\5.7\msvc2013_64\include\QtWidgets\QWidget \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QCoreApplication \
 		desktop_settings.h \
 		ui_elements\buffercontrol.h \
+		unified_debug_structure.h \
 		ui_elements\siprint.h \
 		isodriver.h \
 		C:\Qt\5.7\msvc2013_64\bin\moc.exe
@@ -3226,6 +3230,7 @@ release\moc_genericusbdriver.cpp: C:\Qt\5.7\msvc2013_64\include\QtWidgets\QWidge
 		C:\Qt\5.7\msvc2013_64\include\QtCore\qeventloop.h \
 		desktop_settings.h \
 		ui_elements\buffercontrol.h \
+		unified_debug_structure.h \
 		genericusbdriver.h \
 		C:\Qt\5.7\msvc2013_64\bin\moc.exe
 	C:\Qt\5.7\msvc2013_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1800 -D_WIN32 -D_WIN64 -IC:/Qt/5.7/msvc2013_64/mkspecs/win32-msvc2013 -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/build_win" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/build_win/libusbk/includes" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/ui_elements" -IC:/Qt/5.7/msvc2013_64/include -IC:/Qt/5.7/msvc2013_64/include/QtPrintSupport -IC:/Qt/5.7/msvc2013_64/include/QtWidgets -IC:/Qt/5.7/msvc2013_64/include/QtGui -IC:/Qt/5.7/msvc2013_64/include/QtANGLE -IC:/Qt/5.7/msvc2013_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include genericusbdriver.h -o release\moc_genericusbdriver.cpp
@@ -3350,6 +3355,7 @@ release\moc_winusbdriver.cpp: build_win\libusbk\includes\libusbk.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\qeventloop.h \
 		desktop_settings.h \
 		ui_elements\buffercontrol.h \
+		unified_debug_structure.h \
 		winusbdriver.h \
 		C:\Qt\5.7\msvc2013_64\bin\moc.exe
 	C:\Qt\5.7\msvc2013_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1800 -D_WIN32 -D_WIN64 -IC:/Qt/5.7/msvc2013_64/mkspecs/win32-msvc2013 -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/build_win" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/build_win/libusbk/includes" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/ui_elements" -IC:/Qt/5.7/msvc2013_64/include -IC:/Qt/5.7/msvc2013_64/include/QtPrintSupport -IC:/Qt/5.7/msvc2013_64/include/QtWidgets -IC:/Qt/5.7/msvc2013_64/include/QtGui -IC:/Qt/5.7/msvc2013_64/include/QtANGLE -IC:/Qt/5.7/msvc2013_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include winusbdriver.h -o release\moc_winusbdriver.cpp
@@ -4298,6 +4304,7 @@ ui_mainwindow.h: mainwindow.ui \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\qeventloop.h \
 		desktop_settings.h \
 		ui_elements\buffercontrol.h \
+		unified_debug_structure.h \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QWidget \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\qwidget.h \
 		C:\Qt\5.7\msvc2013_64\include\QtGui\qwindowdefs.h \
@@ -4893,6 +4900,7 @@ ui_mainwindow.h: mainwindow.ui \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QCoreApplication \
 		desktop_settings.h \
 		ui_elements\buffercontrol.h \
+		unified_debug_structure.h \
 		ui_elements\siprint.h \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QWidget \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\qwidget.h \
@@ -5869,7 +5877,8 @@ release\espocombobox.obj: ui_elements\espocombobox.cpp ui_elements/espocombobox.
 		C:\Qt\5.7\msvc2013_64\include\QtCore\qcoreapplication.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\qeventloop.h \
 		desktop_settings.h \
-		ui_elements/buffercontrol.h
+		ui_elements/buffercontrol.h \
+		unified_debug_structure.h
 
 release\esposlider.obj: ui_elements\esposlider.cpp ui_elements/esposlider.h \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QSlider \
@@ -7442,6 +7451,7 @@ release\main.obj: main.cpp mainwindow.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QCoreApplication \
 		desktop_settings.h \
 		ui_elements/buffercontrol.h \
+		unified_debug_structure.h \
 		ui_mainwindow.h \
 		scoperangeenterdialog.h \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QDialog \
@@ -7952,6 +7962,7 @@ release\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QCoreApplication \
 		desktop_settings.h \
 		ui_elements/buffercontrol.h \
+		unified_debug_structure.h \
 		ui_mainwindow.h \
 		scoperangeenterdialog.h \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QDialog \
@@ -8560,6 +8571,7 @@ release\isodriver.obj: isodriver.cpp isodriver.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QCoreApplication \
 		desktop_settings.h \
 		ui_elements/buffercontrol.h \
+		unified_debug_structure.h \
 		ui_elements/siprint.h \
 		isobuffer.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QByteArray \
@@ -9057,6 +9069,7 @@ release\isobuffer.obj: isobuffer.cpp isobuffer.h \
 		functiongencontrol.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QCoreApplication \
 		ui_elements/buffercontrol.h \
+		unified_debug_structure.h \
 		ui_elements/siprint.h
 
 release\desktop_settings.obj: desktop_settings.cpp desktop_settings.h
@@ -9280,7 +9293,8 @@ release\genericusbdriver.obj: genericusbdriver.cpp genericusbdriver.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\qcoreapplication.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\qeventloop.h \
 		desktop_settings.h \
-		ui_elements/buffercontrol.h
+		ui_elements/buffercontrol.h \
+		unified_debug_structure.h
 
 release\isobufferbuffer.obj: isobufferbuffer.cpp isobufferbuffer.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QDebug \
@@ -9466,7 +9480,8 @@ release\winusbdriver.obj: winusbdriver.cpp winusbdriver.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\qcoreapplication.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\qeventloop.h \
 		desktop_settings.h \
-		ui_elements/buffercontrol.h
+		ui_elements/buffercontrol.h \
+		unified_debug_structure.h
 
 release\qrc_resources.obj: release\qrc_resources.cpp 
 
