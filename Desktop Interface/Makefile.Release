@@ -141,6 +141,7 @@ DIST          =  ui_elements\buffercontrol.h \
 		scoperangeenterdialog.h \
 		genericusbdriver.h \
 		isobufferbuffer.h \
+		q_debugstream.h \
 		winusbdriver.h ui_elements\buffercontrol.cpp \
 		ui_elements\cursorenabler.cpp \
 		ui_elements\deviceconnecteddisplay.cpp \
@@ -2266,6 +2267,8 @@ release\moc_mainwindow.cpp: C:\Qt\5.7\msvc2013_64\include\QtWidgets\QMainWindow 
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QByteArray \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QPlainTextEdit \
 		isobufferbuffer.h \
+		q_debugstream.h \
+		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QTextEdit.h \
 		mainwindow.h \
 		C:\Qt\5.7\msvc2013_64\bin\moc.exe
 	C:\Qt\5.7\msvc2013_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1800 -D_WIN32 -D_WIN64 -IC:/Qt/5.7/msvc2013_64/mkspecs/win32-msvc2013 -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/build_win" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/build_win/libusbk/includes" -I"C:/Users/Esposch/Documents/GitHub/Labrador/Desktop Interface/ui_elements" -IC:/Qt/5.7/msvc2013_64/include -IC:/Qt/5.7/msvc2013_64/include/QtPrintSupport -IC:/Qt/5.7/msvc2013_64/include/QtWidgets -IC:/Qt/5.7/msvc2013_64/include/QtGui -IC:/Qt/5.7/msvc2013_64/include/QtANGLE -IC:/Qt/5.7/msvc2013_64/include/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o release\moc_mainwindow.cpp
@@ -7446,6 +7449,8 @@ release\main.obj: main.cpp mainwindow.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QByteArray \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QPlainTextEdit \
 		isobufferbuffer.h \
+		q_debugstream.h \
+		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QTextEdit.h \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QApplication
 
 release\mainwindow.obj: mainwindow.cpp mainwindow.h \
@@ -7953,7 +7958,9 @@ release\mainwindow.obj: mainwindow.cpp mainwindow.h \
 		isobuffer.h \
 		C:\Qt\5.7\msvc2013_64\include\QtCore\QByteArray \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QPlainTextEdit \
-		isobufferbuffer.h
+		isobufferbuffer.h \
+		q_debugstream.h \
+		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QTextEdit.h
 
 release\functiongencontrol.obj: functiongencontrol.cpp functiongencontrol.h \
 		C:\Qt\5.7\msvc2013_64\include\QtWidgets\QWidget \
