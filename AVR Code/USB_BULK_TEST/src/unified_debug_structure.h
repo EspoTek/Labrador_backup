@@ -22,6 +22,10 @@ typedef struct uds{
 	volatile uint8_t calValPos;
 	volatile uint8_t CALA;
 	volatile uint8_t CALB;
+	volatile uint8_t outOfRangeL;
+	volatile uint8_t outOfRangeH;
+	volatile uint8_t counterL;
+	volatile uint8_t counterH;	
 } unified_debug;
 
 #endif /* UNIFIED_DEBUG_STRUCTURE_H_ */

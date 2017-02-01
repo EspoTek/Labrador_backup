@@ -52,7 +52,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Reset the device to ensure Labrador_libusbk gets handle!!
     #ifdef PLATFORM_WINDOWS
-        ui->controller_iso->driver->usbSendControl(0x40, 0xa7, 0, 0, 0, NULL);
+        //ui->controller_iso->driver->usbSendControl(0x40, 0xa7, 0, 0, 0, NULL);
+        reinitUsb();
     #endif
     #ifdef PLATFORM_LINUX
         reinitUsb();

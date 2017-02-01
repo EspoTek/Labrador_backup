@@ -70,6 +70,8 @@ void tiny_calibration_maintain(){
 		//This is an untested, last-ditch effort to hopefully prevent runaway if there's significant drift over time.
 		calibration_values_found = 0x00;
 		outOfRange++;
+		uds.outOfRangeH = (outOfRange >> 8) & 0xff;
+		uds.outOfRangeL = outOfRange & 0xff;
 		warmup = 6;
 	}
 	

@@ -81,7 +81,7 @@ void tiny_dma_set_mode_0(void){
 	DMA.CH0.CTRLA = DMA_CH_RESET_bm;
 		
 	DMA.CH0.CTRLA = DMA_CH_BURSTLEN_1BYTE_gc | DMA_CH_SINGLE_bm | DMA_CH_REPEAT_bm; //Do not repeat!
-	DMA.CH0.CTRLB = 0x02; //No interrupt!
+	DMA.CH0.CTRLB = 0x00; //No interrupt!
 	DMA.CH0.ADDRCTRL = DMA_CH_SRCRELOAD_BURST_gc | DMA_CH_SRCDIR_INC_gc | DMA_CH_DESTDIR_INC_gc | DMA_CH_DESTRELOAD_BLOCK_gc;   //Source reloads after each burst, with byte incrementing.  Dest does not reload, but does increment address.
 	DMA.CH0.TRIGSRC = DMA_CH_TRIGSRC_ADCA_CH0_gc;	//Triggered from ADCA channel 0
 	DMA.CH0.TRFCNT = PACKET_SIZE;

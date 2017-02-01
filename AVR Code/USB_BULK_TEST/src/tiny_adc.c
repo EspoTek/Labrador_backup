@@ -53,7 +53,7 @@ void tiny_adc_ch1setup(unsigned char gain_mask){
 	ADCA.CH2.CTRL = 0x00; //Reset
 	ADCA.CH2.CTRL = ADC_CH_START_bm | gain_mask | ADC_CH_INPUTMODE_DIFFWGAIN_gc;
 	ADCA.CH2.MUXCTRL = ADC_CH_MUXPOS_PIN2_gc | ADC_CH_MUXNEG_PIN4_gc;
-	ADCA.CH2.INTCTRL = ADC_CH_INTLVL_HI_gc;
+	ADCA.CH2.INTCTRL = ADC_CH_INTLVL_OFF_gc;
 	ADCA.CH2.SCAN = 0x00;  //Disable scanning
 }
 

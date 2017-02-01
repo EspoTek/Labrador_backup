@@ -272,13 +272,19 @@ void genericUsbDriver::avrDebug(void){
     unified_debug *udsPtr = (unified_debug *) inBuffer;
     uint16_t trfcnt0 = (udsPtr->trfcntH0 << 8) + udsPtr->trfcntL0;
     uint16_t medianTrfcnt = (udsPtr->medianTrfcntH << 8) + udsPtr->medianTrfcntL;
+    uint16_t outOfRange = (udsPtr->outOfRangeH << 8) + udsPtr->outOfRangeL;
+    uint16_t counter = (udsPtr->counterH << 8) + udsPtr->counterL;
+
     qDebug("%s", udsPtr->header);
-    qDebug() << trfcnt0;
-    qDebug() << medianTrfcnt;
-    qDebug() << udsPtr->calValNeg;
-    qDebug() << udsPtr->calValPos;
-    qDebug() << udsPtr->CALA;
-    qDebug() << udsPtr->CALB;
+    qDebug() << "trfcnt0 =" << trfcnt0;
+    qDebug() << "medianTrfcnt =" << medianTrfcnt;
+    qDebug() << "outOfRange = " << outOfRange;
+    qDebug() << "counter = " << counter;
+    qDebug() << "calValNeg = " << udsPtr->calValNeg;
+    qDebug() << "calValPos = " << udsPtr->calValPos;
+    qDebug() << "CALA = " << udsPtr->CALA;
+    qDebug() << "CALB = " << udsPtr->CALB;
+
 }
 
 void genericUsbDriver::saveState(int *_out_deviceMode, double *_out_scopeGain, double *_out_currentPsuVoltage, int *_out_digitalPinState){

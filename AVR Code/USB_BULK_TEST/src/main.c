@@ -123,6 +123,8 @@ void main_sof_action(void)
 	cli();
 	uds.trfcntL0 = DMA.CH0.TRFCNTL;
 	uds.trfcntH0 = DMA.CH0.TRFCNTH;	
+	uds.counterL = TC_CALI.CNTL;
+	uds.counterH = TC_CALI.CNTH;
 	if((DMA.CH0.TRFCNT > 325) && (DMA.CH0.TRFCNT < 425)){
 		currentTrfcnt = DMA.CH0.TRFCNT;
 		asm("nop");
