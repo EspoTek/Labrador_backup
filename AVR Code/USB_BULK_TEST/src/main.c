@@ -167,9 +167,9 @@ bool main_vendor_enable(void)
 {
 	main_b_vendor_enable = true;
 	firstFrame = 1;
-	udi_vendor_iso_in_run((uint8_t *)&isoBuf[0], 250, iso_callback);
-	udi_vendor_iso_in_run2((uint8_t *)&isoBuf[250], 250, iso_callback2);
-	udi_vendor_iso_in_run3((uint8_t *)&isoBuf[500], 250, iso_callback3);
+	udd_ep_run(0x81, false, (uint8_t *)&isoBuf[0], 250, iso_callback);
+	udd_ep_run(0x82, false, (uint8_t *)&isoBuf[250], 250, iso_callback);
+	udd_ep_run(0x83, false, (uint8_t *)&isoBuf[500], 250, iso_callback);
 	return true;
 }
 
@@ -189,18 +189,7 @@ bool main_setup_in_received(void)
 }
 
 void iso_callback(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
-	udi_vendor_iso_in_run((uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE], 250, iso_callback);
+	unsigned short offset = (ep - 129) * 250;
+	udd_ep_run(ep, false, (uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE + offset], 250, iso_callback);
 	return;
 }
-
-void iso_callback2(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
-	udi_vendor_iso_in_run2((uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE + 250], 250, iso_callback2);
-	return;
-}
-
-void iso_callback3(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
-	udi_vendor_iso_in_run3((uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE + 500], 250, iso_callback3);
-	return;
-}
-
-

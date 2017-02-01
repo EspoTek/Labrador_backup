@@ -371,9 +371,6 @@ bool udi_vendor_bulk_out_run(uint8_t * buf, iram_size_t buf_size,
  * \return \c 1 if function was successfully done, otherwise \c 0.
  */
 bool udi_vendor_iso_in_run(uint8_t * buf, iram_size_t buf_size, udd_callback_trans_t callback);
-bool udi_vendor_iso_in_run2(uint8_t * buf, iram_size_t buf_size, udd_callback_trans_t callback);
-bool udi_vendor_iso_in_run3(uint8_t * buf, iram_size_t buf_size, udd_callback_trans_t callback);
-
 
 /**
  * \brief Start a transfer on isochronous OUT
