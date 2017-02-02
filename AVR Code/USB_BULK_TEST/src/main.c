@@ -55,6 +55,9 @@ volatile unsigned int median_TRFCNT = 65535;
 
 volatile char debug_data[8] = "DEBUG123";
 
+volatile unsigned short dma_ch0_ran;
+volatile unsigned short dma_ch1_ran;
+
 unified_debug uds;
 
 int main(void){
@@ -123,6 +126,8 @@ void main_sof_action(void)
 	cli();
 	uds.trfcntL0 = DMA.CH0.TRFCNTL;
 	uds.trfcntH0 = DMA.CH0.TRFCNTH;	
+	uds.trfcntL1 = DMA.CH1.TRFCNTL;
+	uds.trfcntH1 = DMA.CH1.TRFCNTH;
 	uds.counterL = TC_CALI.CNTL;
 	uds.counterH = TC_CALI.CNTH;
 	if((DMA.CH0.TRFCNT > 325) && (DMA.CH0.TRFCNT < 425)){
@@ -167,9 +172,12 @@ bool main_vendor_enable(void)
 {
 	main_b_vendor_enable = true;
 	firstFrame = 1;
-	udd_ep_run(0x81, false, (uint8_t *)&isoBuf[0], 250, iso_callback);
-	udd_ep_run(0x82, false, (uint8_t *)&isoBuf[250], 250, iso_callback);
-	udd_ep_run(0x83, false, (uint8_t *)&isoBuf[500], 250, iso_callback);
+	udd_ep_run(0x81, false, (uint8_t *)&isoBuf[0], 125, iso_callback);
+	udd_ep_run(0x82, false, (uint8_t *)&isoBuf[125], 125, iso_callback);
+	udd_ep_run(0x83, false, (uint8_t *)&isoBuf[250], 125, iso_callback);
+	udd_ep_run(0x84, false, (uint8_t *)&isoBuf[375], 125, iso_callback);
+	udd_ep_run(0x85, false, (uint8_t *)&isoBuf[500], 125, iso_callback);
+	udd_ep_run(0x86, false, (uint8_t *)&isoBuf[625], 125, iso_callback);
 	return true;
 }
 
@@ -189,7 +197,8 @@ bool main_setup_in_received(void)
 }
 
 void iso_callback(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
-	unsigned short offset = (ep - 129) * 250;
-	udd_ep_run(ep, false, (uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE + offset], 250, iso_callback);
+	unsigned short offset = (ep - 0x81) * 125;
+	if (ep > 0x83) offset += 375; //Shift from range [375, 750]  to [750, 1125]
+	udd_ep_run(ep, false, (uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE + offset], 125, iso_callback);
 	return;
 }

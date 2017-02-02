@@ -16,6 +16,8 @@ typedef struct uds{
     volatile char header[9];
     volatile uint8_t trfcntL0;
     volatile uint8_t trfcntH0;
+	volatile uint8_t trfcntL1;
+	volatile uint8_t trfcntH1;
 	volatile uint8_t medianTrfcntL;
 	volatile uint8_t medianTrfcntH;
 	volatile uint8_t calValNeg;
@@ -26,6 +28,11 @@ typedef struct uds{
 	volatile uint8_t outOfRangeH;
 	volatile uint8_t counterL;
 	volatile uint8_t counterH;	
+	volatile uint8_t dma_ch0_cntL;
+	volatile uint8_t dma_ch0_cntH;
+	volatile uint8_t dma_ch1_cntL;
+	volatile uint8_t dma_ch1_cntH;
+
 } unified_debug;
 
 #endif /* UNIFIED_DEBUG_STRUCTURE_H_ */

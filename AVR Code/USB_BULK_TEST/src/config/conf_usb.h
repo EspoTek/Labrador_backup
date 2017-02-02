@@ -129,7 +129,7 @@
 #if SAMG55
 #define UDI_VENDOR_EPS_SIZE_ISO_FS   0
 #else
-#define UDI_VENDOR_EPS_SIZE_ISO_FS   256
+#define UDI_VENDOR_EPS_SIZE_ISO_FS   128
 #endif
 
 //! endpoints size for high speed

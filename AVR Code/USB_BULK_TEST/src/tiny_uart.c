@@ -23,7 +23,7 @@ void tiny_uart_setup(void){
 	
 	USARTC0.CTRLC = USART_CMODE_MSPI_gc | 0b00000100; //LSB received first, UPCHA disabled
 	USARTC0.BAUDCTRLA = 3;  	//BSEL = fper/(2fbaud) -1;  24/(2*3) - 1 = 3
-	USARTC0.BAUDCTRLB = 0x00;//USART_BSCALE0_bm;
+	USARTC0.BAUDCTRLB = USART_BSCALE0_bm;
 	USARTC0.CTRLB = USART_RXEN_bm | USART_TXEN_bm;
 }
 

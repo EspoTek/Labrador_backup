@@ -9,7 +9,7 @@
 #ifndef GLOBALS_H_
 #define GLOBALS_H_
 
-//#define VERO
+#define VERO
 
 #define TC_SPISLAVE TCD0
 #define TC_PSU TCD1
@@ -51,6 +51,9 @@ extern volatile unsigned char test_byte;
 extern volatile unsigned char debugOnNextEnd;
 
 extern volatile unsigned int median_TRFCNT;
+
+extern volatile unsigned short dma_ch0_ran;
+extern volatile unsigned short dma_ch1_ran;
 
 #include "unified_debug_structure.h"
 extern unified_debug uds;
