@@ -195,9 +195,8 @@ void tiny_calibration_layer2(){
 		return;
 	}
 	unsigned int TRFCNT_temp = DMA.CH0.TRFCNT;
-	if(magnitude_difference(TRFCNT_temp, median_TRFCNT) > 200){
-		TRFCNT_temp = (TRFCNT_temp + HALFPACKET_SIZE) % PACKET_SIZE;
-	}
+	TRFCNT_temp = TRFCNT_temp % (global_mode > 5 ? PACKET_SIZE : HALFPACKET_SIZE);
+	
 	if((TRFCNT_temp > median_TRFCNT) &&  (magnitude_difference(TRFCNT_temp, median_TRFCNT) > MAXIMUM_DEVIATION)){
 		TC_CALI.PERBUF = 24000;
 		return;
