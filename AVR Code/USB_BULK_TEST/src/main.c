@@ -163,7 +163,12 @@ void main_sof_action(void)
 		currentTrfcnt = DMA.CH0.TRFCNT;
 		debugOnNextEnd = 0;
 	}
-	usb_state = (DMA.CH0.TRFCNT < 375) ? 1 : 0;
+	if(global_mode < 5){
+		usb_state = (DMA.CH0.TRFCNT < 375) ? 1 : 0;
+	}
+	else{
+		usb_state = (DMA.CH0.TRFCNT < 750) ? 1 : 0;
+	}
 	sei();
 	return;
 }
@@ -198,7 +203,7 @@ bool main_setup_in_received(void)
 
 void iso_callback(udd_ep_status_t status, iram_size_t nb_transfered, udd_ep_id_t ep){
 	unsigned short offset = (ep - 0x81) * 125;
-	if (ep > 0x83) offset += 375; //Shift from range [375, 750]  to [750, 1125]
+	if ((global_mode < 5) && (ep > 0x83)) offset += 375; //Shift from range [375, 750]  to [750, 1125]  Don't do this in modes 6 and 7 because they use 750 byte long sub-buffers.
 	udd_ep_run(ep, false, (uint8_t *)&isoBuf[usb_state * HALFPACKET_SIZE + offset], 125, iso_callback);
 	return;
 }

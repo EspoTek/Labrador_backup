@@ -50,6 +50,6 @@ ISR(SPIC_INT_vect){
 }
 
 ISR(USARTC0_RXC_vect){
-	unsigned int temp = USARTC0.DATA;
+	unsigned char temp = USARTC0.DATA;
 	USARTC0.DATA = temp;
 }
