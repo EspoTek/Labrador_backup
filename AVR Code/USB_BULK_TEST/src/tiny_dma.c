@@ -16,7 +16,7 @@
 void tiny_dma_setup(void){
 	//Turn on DMA
 	PR.PRGEN &=0b111111110; //Turn on DMA clk
-	DMA.CTRL = DMA_ENABLE_bm | DMA_PRIMODE_CH01RR23_gc;
+	DMA.CTRL = DMA_ENABLE_bm | DMA_PRIMODE_CH0123_gc;
 }
 void tiny_dma_flush(void){
 	DMA.CH0.CTRLA = 0x00;
@@ -137,11 +137,10 @@ void tiny_dma_set_mode_1(void){
 		
 	//Must enable last for REPCNT won't work!
 	DMA.CH2.CTRLA |= DMA_CH_REPEAT_bm | DMA_CH_ENABLE_bm;  //Enable!
-		
+
 	USARTC0.DATA = 0x55;
 	USARTC0.DATA = 0x55;
-	USARTC0.DATA = 0x55;
-	
+
 	DMA.CH3.REPCNT = 0; //Repeat forever!
 	DMA.CH3.CTRLA = DMA_CH_BURSTLEN_1BYTE_gc | DMA_CH_SINGLE_bm | DMA_CH_REPEAT_bm;
 	DMA.CH3.CTRLB = 0x00; //No interrupt for DacBuf!!
