@@ -543,7 +543,7 @@ void tiny_dma_set_mode_6(void){
 	DMA.CH0.DESTADDR2 = 0x00;
 		
 	tiny_calibration_synchronise_phase(500, 200);
-	median_TRFCNT = 560;
+	median_TRFCNT = 400;
 	median_TRFCNT_delay = 1; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
 	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!	
 	
@@ -614,7 +614,7 @@ void tiny_dma_set_mode_7(void){
 		DMA.CH0.DESTADDR2 = 0x00;
 				
 		tiny_calibration_synchronise_phase(500, 200);
-		median_TRFCNT = 560;
+		median_TRFCNT = 400;
 		median_TRFCNT_delay = 1; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
 		DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!	
 		sei();

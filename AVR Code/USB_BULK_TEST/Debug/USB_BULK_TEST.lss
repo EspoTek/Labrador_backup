@@ -2428,8 +2428,8 @@ void tiny_dma_loop_mode_7(void){
     11bc:	84 ef       	ldi	r24, 0xF4	; 244
     11be:	91 e0       	ldi	r25, 0x01	; 1
     11c0:	a6 da       	rcall	.-2740   	; 0x70e <tiny_calibration_synchronise_phase>
-    11c2:	80 e3       	ldi	r24, 0x30	; 48
-    11c4:	92 e0       	ldi	r25, 0x02	; 2
+    11c2:	80 e9       	ldi	r24, 0x90	; 144
+    11c4:	91 e0       	ldi	r25, 0x01	; 1
     11c6:	80 93 07 20 	sts	0x2007, r24	; 0x802007 <median_TRFCNT>
     11ca:	90 93 08 20 	sts	0x2008, r25	; 0x802008 <median_TRFCNT+0x1>
     11ce:	81 e0       	ldi	r24, 0x01	; 1
@@ -2526,8 +2526,8 @@ void tiny_dma_loop_mode_7(void){
     12a8:	84 ef       	ldi	r24, 0xF4	; 244
     12aa:	91 e0       	ldi	r25, 0x01	; 1
     12ac:	30 da       	rcall	.-2976   	; 0x70e <tiny_calibration_synchronise_phase>
-    12ae:	80 e3       	ldi	r24, 0x30	; 48
-    12b0:	92 e0       	ldi	r25, 0x02	; 2
+    12ae:	80 e9       	ldi	r24, 0x90	; 144
+    12b0:	91 e0       	ldi	r25, 0x01	; 1
     12b2:	80 93 07 20 	sts	0x2007, r24	; 0x802007 <median_TRFCNT>
     12b6:	90 93 08 20 	sts	0x2008, r25	; 0x802008 <median_TRFCNT+0x1>
     12ba:	81 e0       	ldi	r24, 0x01	; 1
