@@ -19,7 +19,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00001f34  00000000  00000000  0000fbc0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000989e  00000000  00000000  00011af4  2**0
+  8 .debug_line   0000989f  00000000  00000000  00011af4  2**0
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000b70  00000000  00000000  0001b394  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -438,7 +438,7 @@ int tiny_distance_from_centre(unsigned int point){
      308:	9e e2       	ldi	r25, 0x2E	; 46
      30a:	80 a3       	std	Z+32, r24	; 0x20
      30c:	91 a3       	std	Z+33, r25	; 0x21
-     30e:	81 e0       	ldi	r24, 0x01	; 1
+     30e:	82 e0       	ldi	r24, 0x02	; 2
      310:	80 83       	st	Z, r24
      312:	08 95       	ret
 

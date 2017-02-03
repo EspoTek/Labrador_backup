@@ -2900,25 +2900,25 @@ END GROUP
  .debug_abbrev  0x0000194e       0x12 src/ASF/xmega/drivers/nvm/nvm_asm.o
  .debug_abbrev  0x00001960      0x5d4 src/ASF/xmega/drivers/usb/usb_device.o
 
-.debug_line     0x00000000     0x989e
+.debug_line     0x00000000     0x989f
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0xb92 src/tiny_calibration.o
- .debug_line    0x00000b92      0x7d5 src/tiny_dig.o
- .debug_line    0x00001367      0x78d src/ASF/common/boards/user_board/init.o
- .debug_line    0x00001af4      0xaf7 src/main.o
- .debug_line    0x000025eb      0x994 src/tiny_adc.o
- .debug_line    0x00002f7f      0x806 src/tiny_dac.o
- .debug_line    0x00003785     0x13b2 src/tiny_dma.o
- .debug_line    0x00004b37      0x8de src/tiny_timer.o
- .debug_line    0x00005415      0x87e src/tiny_uart.o
- .debug_line    0x00005c93      0x738 src/ASF/common/services/clock/xmega/sysclk.o
- .debug_line    0x000063cb      0x455 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
- .debug_line    0x00006820      0x5eb src/ASF/common/services/usb/class/vendor/device/udi_vendor.o
- .debug_line    0x00006e0b      0x4f1 src/ASF/common/services/usb/class/vendor/device/udi_vendor_desc.o
- .debug_line    0x000072fc      0xf05 src/ASF/common/services/usb/udc/udc.o
- .debug_line    0x00008201       0x6e src/ASF/xmega/drivers/cpu/ccp.o
- .debug_line    0x0000826f      0x11f src/ASF/xmega/drivers/nvm/nvm_asm.o
- .debug_line    0x0000838e     0x1510 src/ASF/xmega/drivers/usb/usb_device.o
+ .debug_line    0x00000000      0xb93 src/tiny_calibration.o
+ .debug_line    0x00000b93      0x7d5 src/tiny_dig.o
+ .debug_line    0x00001368      0x78d src/ASF/common/boards/user_board/init.o
+ .debug_line    0x00001af5      0xaf7 src/main.o
+ .debug_line    0x000025ec      0x994 src/tiny_adc.o
+ .debug_line    0x00002f80      0x806 src/tiny_dac.o
+ .debug_line    0x00003786     0x13b2 src/tiny_dma.o
+ .debug_line    0x00004b38      0x8de src/tiny_timer.o
+ .debug_line    0x00005416      0x87e src/tiny_uart.o
+ .debug_line    0x00005c94      0x738 src/ASF/common/services/clock/xmega/sysclk.o
+ .debug_line    0x000063cc      0x455 src/ASF/common/services/sleepmgr/xmega/sleepmgr.o
+ .debug_line    0x00006821      0x5eb src/ASF/common/services/usb/class/vendor/device/udi_vendor.o
+ .debug_line    0x00006e0c      0x4f1 src/ASF/common/services/usb/class/vendor/device/udi_vendor_desc.o
+ .debug_line    0x000072fd      0xf05 src/ASF/common/services/usb/udc/udc.o
+ .debug_line    0x00008202       0x6e src/ASF/xmega/drivers/cpu/ccp.o
+ .debug_line    0x00008270      0x11f src/ASF/xmega/drivers/nvm/nvm_asm.o
+ .debug_line    0x0000838f     0x1510 src/ASF/xmega/drivers/usb/usb_device.o
 
 .debug_frame    0x00000000      0xb70
  *(.debug_frame)

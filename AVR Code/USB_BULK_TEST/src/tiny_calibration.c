@@ -50,7 +50,11 @@ tiny_calibration_first_sof(){
 		PR.PRPE &= 0b11111110;
 		TC_CALI.PER = 23999;
 		TC_CALI.CNT = 12000;
-		TC_CALI.CTRLA = TC_CLKSEL_DIV1_gc;
+		#if OVERCLOCK == 48
+			TC_CALI.CTRLA = TC_CLKSEL_DIV2_gc;
+		#else
+			TC_CALI.CTRLA = TC_CLKSEL_DIV1_gc;
+		#endif 
 		return;
 }
 
