@@ -23,7 +23,11 @@ void tiny_uart_setup(void){
 	
 	USARTC0.CTRLA = USART_RXCINTLVL_HI_gc;
 	USARTC0.CTRLC = USART_CMODE_MSPI_gc | 0b00000100; //LSB received first, UPCHA disabled
-	USARTC0.BAUDCTRLA = 3;  	//BSEL = fper/(2fbaud) -1;  24/(2*3) - 1 = 3
+	#if OVERCLOCK == 48
+		USARTC0.BAUDCTRLA = 7;  	//BSEL = fper/(2fbaud) -1;  48/(2*3) - 1 = 7
+	#else
+		USARTC0.BAUDCTRLA = 3;  	//BSEL = fper/(2fbaud) -1;  24/(2*3) - 1 = 3
+	#endif
 	USARTC0.BAUDCTRLB = 0x00;// USART_BSCALE0_bm goes to 1.5MHz for some reason;
 	USARTC0.CTRLB = USART_RXEN_bm | USART_TXEN_bm;
 }

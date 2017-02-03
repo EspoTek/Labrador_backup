@@ -21,7 +21,11 @@ void tiny_calibration_init(){
 		
 		//Turn on the 48MHz clock and scale it down to 24MHz
 		CCP = CCP_IOREG_gc;
-		CLK.PSCTRL = CLK_PSADIV_2_gc | CLK_PSBCDIV_1_1_gc;  //All peripheral clocks = CLKsys / 2.
+		#if OVERCLOCK == 48
+			CLK.PSCTRL = CLK_PSADIV_1_gc | CLK_PSBCDIV_1_1_gc;  //All peripheral clocks = CLKsys / 2.
+		#else
+			CLK.PSCTRL = CLK_PSADIV_2_gc | CLK_PSBCDIV_1_1_gc;  //All peripheral clocks = CLKsys / 2.
+		#endif 
 		//CLK.USBCTRL handled by udc
 		OSC.CTRL = OSC_RC32MEN_bm | OSC_RC2MEN_bm;  //Enable 32MHz reference.  Keep 2MHz on.
 		while(OSC.STATUS != (OSC_RC32MRDY_bm | OSC_RC2MRDY_bm)); //Wait for it to be ready before continuing

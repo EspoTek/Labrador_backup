@@ -98,7 +98,7 @@ void tiny_dma_set_mode_0(void){
 	DMA.CH0.DESTADDR2 = 0x00;
 		
 	tiny_calibration_synchronise_phase(500, 200);
-	median_TRFCNT = 65535;
+	median_TRFCNT = 200;
 	median_TRFCNT_delay = 1; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
 	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
 	sei();
@@ -187,7 +187,7 @@ void tiny_dma_set_mode_1(void){
 	DMA.CH0.DESTADDR2 = 0x00;
 	
 	tiny_calibration_synchronise_phase(500, 200);
-	median_TRFCNT = 65535;
+	median_TRFCNT = 200;
 	median_TRFCNT_delay = 1; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
 	DMA.CH1.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
 	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
@@ -277,7 +277,7 @@ void tiny_dma_set_mode_2(void){
 	//Must enable last for REPCNT won't work!
 
 	tiny_calibration_synchronise_phase(500, 200);
-	median_TRFCNT = 65535;
+	median_TRFCNT = 200;
 	median_TRFCNT_delay = 1; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
 	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
 	DMA.CH1.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
@@ -375,7 +375,7 @@ void tiny_dma_set_mode_3(void){
 	DMA.CH0.DESTADDR2 = 0x00;
 		
 	tiny_calibration_synchronise_phase(500, 200);
-	median_TRFCNT = 65535;
+	median_TRFCNT = 200;
 	median_TRFCNT_delay = 1; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
 
 	//Must enable last for REPCNT won't work!
@@ -467,7 +467,7 @@ void tiny_dma_set_mode_4(void){
 	DMA.CH1.DESTADDR2 = 0x00;
 		
 	tiny_calibration_synchronise_phase(500, 200);
-	median_TRFCNT = 65535;
+	median_TRFCNT = 200;
 	median_TRFCNT_delay = 1; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
 	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
 	DMA.CH1.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!
@@ -532,7 +532,7 @@ void tiny_dma_set_mode_6(void){
 	DMA.CH0.CTRLB = 0x03; //Hi interrupt!
 	DMA.CH0.ADDRCTRL = DMA_CH_SRCRELOAD_BURST_gc | DMA_CH_SRCDIR_INC_gc | DMA_CH_DESTDIR_INC_gc | DMA_CH_DESTRELOAD_BLOCK_gc;   //Source reloads after each burst, with byte incrementing.  Dest does not reload, but does increment address.
 	DMA.CH0.TRIGSRC = DMA_CH_TRIGSRC_ADCA_CH0_gc;	//Triggered from ADCA channel 0
-	DMA.CH0.TRFCNT = PACKET_SIZE*2;
+	DMA.CH0.TRFCNT = BUFFER_SIZE;
 		
 	DMA.CH0.SRCADDR0 = (( (uint16_t) &ADCA.CH0.RESL) >> 0) & 0xFF; //Source address is ADC
 	DMA.CH0.SRCADDR1 = (( (uint16_t) &ADCA.CH0.RESL) >> 8) & 0xFF;
@@ -543,7 +543,7 @@ void tiny_dma_set_mode_6(void){
 	DMA.CH0.DESTADDR2 = 0x00;
 		
 	tiny_calibration_synchronise_phase(500, 200);
-	median_TRFCNT = 65535;
+	
 	median_TRFCNT_delay = 1; //Wait a few frames before actually setting median_TRFCNT, in case a SOF interrupt was queued during tiny_dma_set_mode_xxx.
 	DMA.CH0.CTRLA |= DMA_CH_ENABLE_bm;  //Enable!	
 	sei();
