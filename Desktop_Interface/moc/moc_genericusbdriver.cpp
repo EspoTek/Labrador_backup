@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'genericusbdriver.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'genericusbdriver.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,54 +20,53 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_genericUsbDriver_t {
     QByteArrayData data[38];
-    char stringdata0[417];
+    char stringdata[417];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_genericUsbDriver_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_genericUsbDriver_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_genericUsbDriver_t qt_meta_stringdata_genericUsbDriver = {
     {
-QT_MOC_LITERAL(0, 0, 16), // "genericUsbDriver"
-QT_MOC_LITERAL(1, 17, 15), // "sendClearBuffer"
-QT_MOC_LITERAL(2, 33, 0), // ""
-QT_MOC_LITERAL(3, 34, 6), // "ch3751"
-QT_MOC_LITERAL(4, 41, 6), // "ch3752"
-QT_MOC_LITERAL(5, 48, 5), // "ch750"
-QT_MOC_LITERAL(6, 54, 14), // "setVisible_CH2"
-QT_MOC_LITERAL(7, 69, 7), // "visible"
-QT_MOC_LITERAL(8, 77, 11), // "gainBuffers"
-QT_MOC_LITERAL(9, 89, 10), // "multiplier"
-QT_MOC_LITERAL(10, 100, 13), // "disableWindow"
-QT_MOC_LITERAL(11, 114, 7), // "enabled"
-QT_MOC_LITERAL(12, 122, 13), // "enableMMTimer"
-QT_MOC_LITERAL(13, 136, 7), // "checkXY"
-QT_MOC_LITERAL(14, 144, 6), // "upTick"
-QT_MOC_LITERAL(15, 151, 6), // "killMe"
-QT_MOC_LITERAL(16, 158, 15), // "connectedStatus"
-QT_MOC_LITERAL(17, 174, 6), // "status"
-QT_MOC_LITERAL(18, 181, 22), // "initialConnectComplete"
-QT_MOC_LITERAL(19, 204, 6), // "setPsu"
-QT_MOC_LITERAL(20, 211, 7), // "voltage"
-QT_MOC_LITERAL(21, 219, 14), // "setFunctionGen"
-QT_MOC_LITERAL(22, 234, 7), // "channel"
-QT_MOC_LITERAL(23, 242, 19), // "functionGenControl*"
-QT_MOC_LITERAL(24, 262, 11), // "fGenControl"
-QT_MOC_LITERAL(25, 274, 13), // "setDeviceMode"
-QT_MOC_LITERAL(26, 288, 4), // "mode"
-QT_MOC_LITERAL(27, 293, 6), // "newDig"
-QT_MOC_LITERAL(28, 300, 8), // "digState"
-QT_MOC_LITERAL(29, 309, 7), // "psuTick"
-QT_MOC_LITERAL(30, 317, 7), // "setGain"
-QT_MOC_LITERAL(31, 325, 7), // "newGain"
-QT_MOC_LITERAL(32, 333, 8), // "avrDebug"
-QT_MOC_LITERAL(33, 342, 12), // "isoTimerTick"
-QT_MOC_LITERAL(34, 355, 12), // "recoveryTick"
-QT_MOC_LITERAL(35, 368, 17), // "shutdownProcedure"
-QT_MOC_LITERAL(36, 386, 15), // "checkConnection"
-QT_MOC_LITERAL(37, 402, 14) // "bootloaderJump"
-
+QT_MOC_LITERAL(0, 0, 16),
+QT_MOC_LITERAL(1, 17, 15),
+QT_MOC_LITERAL(2, 33, 0),
+QT_MOC_LITERAL(3, 34, 6),
+QT_MOC_LITERAL(4, 41, 6),
+QT_MOC_LITERAL(5, 48, 5),
+QT_MOC_LITERAL(6, 54, 14),
+QT_MOC_LITERAL(7, 69, 7),
+QT_MOC_LITERAL(8, 77, 11),
+QT_MOC_LITERAL(9, 89, 10),
+QT_MOC_LITERAL(10, 100, 13),
+QT_MOC_LITERAL(11, 114, 7),
+QT_MOC_LITERAL(12, 122, 13),
+QT_MOC_LITERAL(13, 136, 7),
+QT_MOC_LITERAL(14, 144, 6),
+QT_MOC_LITERAL(15, 151, 6),
+QT_MOC_LITERAL(16, 158, 15),
+QT_MOC_LITERAL(17, 174, 6),
+QT_MOC_LITERAL(18, 181, 22),
+QT_MOC_LITERAL(19, 204, 6),
+QT_MOC_LITERAL(20, 211, 7),
+QT_MOC_LITERAL(21, 219, 14),
+QT_MOC_LITERAL(22, 234, 7),
+QT_MOC_LITERAL(23, 242, 19),
+QT_MOC_LITERAL(24, 262, 11),
+QT_MOC_LITERAL(25, 274, 13),
+QT_MOC_LITERAL(26, 288, 4),
+QT_MOC_LITERAL(27, 293, 6),
+QT_MOC_LITERAL(28, 300, 8),
+QT_MOC_LITERAL(29, 309, 7),
+QT_MOC_LITERAL(30, 317, 7),
+QT_MOC_LITERAL(31, 325, 7),
+QT_MOC_LITERAL(32, 333, 8),
+QT_MOC_LITERAL(33, 342, 12),
+QT_MOC_LITERAL(34, 355, 12),
+QT_MOC_LITERAL(35, 368, 17),
+QT_MOC_LITERAL(36, 386, 15),
+QT_MOC_LITERAL(37, 402, 14)
     },
     "genericUsbDriver\0sendClearBuffer\0\0"
     "ch3751\0ch3752\0ch750\0setVisible_CH2\0"
@@ -156,7 +155,6 @@ void genericUsbDriver::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         genericUsbDriver *_t = static_cast<genericUsbDriver *>(_o);
-        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->sendClearBuffer((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3]))); break;
         case 1: _t->setVisible_CH2((*reinterpret_cast< bool(*)>(_a[1]))); break;
@@ -261,7 +259,7 @@ void genericUsbDriver::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
 
 const QMetaObject genericUsbDriver::staticMetaObject = {
     { &QLabel::staticMetaObject, qt_meta_stringdata_genericUsbDriver.data,
-      qt_meta_data_genericUsbDriver,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_genericUsbDriver,  qt_static_metacall, 0, 0}
 };
 
 
@@ -272,8 +270,8 @@ const QMetaObject *genericUsbDriver::metaObject() const
 
 void *genericUsbDriver::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_genericUsbDriver.stringdata0))
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_genericUsbDriver.stringdata))
         return static_cast<void*>(const_cast< genericUsbDriver*>(this));
     return QLabel::qt_metacast(_clname);
 }
@@ -298,66 +296,66 @@ int genericUsbDriver::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void genericUsbDriver::sendClearBuffer(bool _t1, bool _t2, bool _t3)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void genericUsbDriver::setVisible_CH2(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
 void genericUsbDriver::gainBuffers(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
 void genericUsbDriver::disableWindow(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
 void genericUsbDriver::enableMMTimer()
 {
-    QMetaObject::activate(this, &staticMetaObject, 4, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 4, 0);
 }
 
 // SIGNAL 5
 void genericUsbDriver::checkXY(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 
 // SIGNAL 6
 void genericUsbDriver::upTick()
 {
-    QMetaObject::activate(this, &staticMetaObject, 6, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 6, 0);
 }
 
 // SIGNAL 7
 void genericUsbDriver::killMe()
 {
-    QMetaObject::activate(this, &staticMetaObject, 7, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 7, 0);
 }
 
 // SIGNAL 8
 void genericUsbDriver::connectedStatus(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 8, _a);
 }
 
 // SIGNAL 9
 void genericUsbDriver::initialConnectComplete()
 {
-    QMetaObject::activate(this, &staticMetaObject, 9, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 9, 0);
 }
 QT_END_MOC_NAMESPACE

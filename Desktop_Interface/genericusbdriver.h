@@ -27,10 +27,12 @@
     #define NUM_ISO_ENDPOINTS (1)
 #endif
 
-
 #ifdef PLATFORM_WINDOWS
 #define ISO_PACKETS_PER_CTX 17
 #define NUM_FUTURE_CTX 40
+#elif defined PLATFORM_RASPBERRY_PI
+#define ISO_PACKETS_PER_CTX 66 //15fps...
+#define NUM_FUTURE_CTX 4
 #else
 #define ISO_PACKETS_PER_CTX 33
 #define NUM_FUTURE_CTX 4

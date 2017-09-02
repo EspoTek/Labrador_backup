@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'buffercontrol.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'buffercontrol.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,44 +20,43 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bufferControl_t {
     QByteArrayData data[28];
-    char stringdata0[333];
+    char stringdata[333];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_bufferControl_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_bufferControl_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_bufferControl_t qt_meta_stringdata_bufferControl = {
     {
-QT_MOC_LITERAL(0, 0, 13), // "bufferControl"
-QT_MOC_LITERAL(1, 14, 12), // "scopeOut_CH1"
-QT_MOC_LITERAL(2, 27, 0), // ""
-QT_MOC_LITERAL(3, 28, 5), // "state"
-QT_MOC_LITERAL(4, 34, 12), // "scopeOut_CH2"
-QT_MOC_LITERAL(5, 47, 12), // "scopeUncheck"
-QT_MOC_LITERAL(6, 60, 11), // "scopeDsrOut"
-QT_MOC_LITERAL(7, 72, 15), // "scopeDsrUncheck"
-QT_MOC_LITERAL(8, 88, 12), // "signalGenOut"
-QT_MOC_LITERAL(9, 101, 17), // "busSnifferOut_CH1"
-QT_MOC_LITERAL(10, 119, 17), // "busSnifferOut_CH2"
-QT_MOC_LITERAL(11, 137, 17), // "busSnifferUncheck"
-QT_MOC_LITERAL(12, 155, 13), // "multimeterOut"
-QT_MOC_LITERAL(13, 169, 9), // "updateDig"
-QT_MOC_LITERAL(14, 179, 7), // "digMask"
-QT_MOC_LITERAL(15, 187, 10), // "modeChange"
-QT_MOC_LITERAL(16, 198, 7), // "newMode"
-QT_MOC_LITERAL(17, 206, 11), // "scopeIn_CH1"
-QT_MOC_LITERAL(18, 218, 11), // "scopeIn_CH2"
-QT_MOC_LITERAL(19, 230, 10), // "scopeDsrIn"
-QT_MOC_LITERAL(20, 241, 16), // "busSnifferIn_CH1"
-QT_MOC_LITERAL(21, 258, 16), // "busSnifferIn_CH2"
-QT_MOC_LITERAL(22, 275, 12), // "multimeterIn"
-QT_MOC_LITERAL(23, 288, 9), // "digIn_CH1"
-QT_MOC_LITERAL(24, 298, 9), // "digIn_CH2"
-QT_MOC_LITERAL(25, 308, 9), // "digIn_CH3"
-QT_MOC_LITERAL(26, 318, 9), // "digIn_CH4"
-QT_MOC_LITERAL(27, 328, 4) // "poke"
-
+QT_MOC_LITERAL(0, 0, 13),
+QT_MOC_LITERAL(1, 14, 12),
+QT_MOC_LITERAL(2, 27, 0),
+QT_MOC_LITERAL(3, 28, 5),
+QT_MOC_LITERAL(4, 34, 12),
+QT_MOC_LITERAL(5, 47, 12),
+QT_MOC_LITERAL(6, 60, 11),
+QT_MOC_LITERAL(7, 72, 15),
+QT_MOC_LITERAL(8, 88, 12),
+QT_MOC_LITERAL(9, 101, 17),
+QT_MOC_LITERAL(10, 119, 17),
+QT_MOC_LITERAL(11, 137, 17),
+QT_MOC_LITERAL(12, 155, 13),
+QT_MOC_LITERAL(13, 169, 9),
+QT_MOC_LITERAL(14, 179, 7),
+QT_MOC_LITERAL(15, 187, 10),
+QT_MOC_LITERAL(16, 198, 7),
+QT_MOC_LITERAL(17, 206, 11),
+QT_MOC_LITERAL(18, 218, 11),
+QT_MOC_LITERAL(19, 230, 10),
+QT_MOC_LITERAL(20, 241, 16),
+QT_MOC_LITERAL(21, 258, 16),
+QT_MOC_LITERAL(22, 275, 12),
+QT_MOC_LITERAL(23, 288, 9),
+QT_MOC_LITERAL(24, 298, 9),
+QT_MOC_LITERAL(25, 308, 9),
+QT_MOC_LITERAL(26, 318, 9),
+QT_MOC_LITERAL(27, 328, 4)
     },
     "bufferControl\0scopeOut_CH1\0\0state\0"
     "scopeOut_CH2\0scopeUncheck\0scopeDsrOut\0"
@@ -146,7 +145,6 @@ void bufferControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         bufferControl *_t = static_cast<bufferControl *>(_o);
-        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->scopeOut_CH1((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 1: _t->scopeOut_CH2((*reinterpret_cast< bool(*)>(_a[1]))); break;
@@ -253,7 +251,7 @@ void bufferControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
 
 const QMetaObject bufferControl::staticMetaObject = {
     { &QLabel::staticMetaObject, qt_meta_stringdata_bufferControl.data,
-      qt_meta_data_bufferControl,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_bufferControl,  qt_static_metacall, 0, 0}
 };
 
 
@@ -264,8 +262,8 @@ const QMetaObject *bufferControl::metaObject() const
 
 void *bufferControl::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_bufferControl.stringdata0))
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_bufferControl.stringdata))
         return static_cast<void*>(const_cast< bufferControl*>(this));
     return QLabel::qt_metacast(_clname);
 }
@@ -290,84 +288,84 @@ int bufferControl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void bufferControl::scopeOut_CH1(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void bufferControl::scopeOut_CH2(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
 void bufferControl::scopeUncheck(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
 void bufferControl::scopeDsrOut(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
 void bufferControl::scopeDsrUncheck(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 
 // SIGNAL 5
 void bufferControl::signalGenOut(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 
 // SIGNAL 6
 void bufferControl::busSnifferOut_CH1(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 6, _a);
 }
 
 // SIGNAL 7
 void bufferControl::busSnifferOut_CH2(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 7, _a);
 }
 
 // SIGNAL 8
 void bufferControl::busSnifferUncheck(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 8, _a);
 }
 
 // SIGNAL 9
 void bufferControl::multimeterOut(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 9, _a);
 }
 
 // SIGNAL 10
 void bufferControl::updateDig(int _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 10, _a);
 }
 
 // SIGNAL 11
 void bufferControl::modeChange(int _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 11, _a);
 }
 QT_END_MOC_NAMESPACE

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'deviceconnecteddisplay.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'deviceconnecteddisplay.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,20 +20,19 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_deviceConnectedDisplay_t {
     QByteArrayData data[4];
-    char stringdata0[54];
+    char stringdata[54];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_deviceConnectedDisplay_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_deviceConnectedDisplay_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_deviceConnectedDisplay_t qt_meta_stringdata_deviceConnectedDisplay = {
     {
-QT_MOC_LITERAL(0, 0, 22), // "deviceConnectedDisplay"
-QT_MOC_LITERAL(1, 23, 22), // "connectedStatusChanged"
-QT_MOC_LITERAL(2, 46, 0), // ""
-QT_MOC_LITERAL(3, 47, 6) // "status"
-
+QT_MOC_LITERAL(0, 0, 22),
+QT_MOC_LITERAL(1, 23, 22),
+QT_MOC_LITERAL(2, 46, 0),
+QT_MOC_LITERAL(3, 47, 6)
     },
     "deviceConnectedDisplay\0connectedStatusChanged\0"
     "\0status"
@@ -66,7 +65,6 @@ void deviceConnectedDisplay::qt_static_metacall(QObject *_o, QMetaObject::Call _
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         deviceConnectedDisplay *_t = static_cast<deviceConnectedDisplay *>(_o);
-        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->connectedStatusChanged((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
@@ -76,7 +74,7 @@ void deviceConnectedDisplay::qt_static_metacall(QObject *_o, QMetaObject::Call _
 
 const QMetaObject deviceConnectedDisplay::staticMetaObject = {
     { &QLabel::staticMetaObject, qt_meta_stringdata_deviceConnectedDisplay.data,
-      qt_meta_data_deviceConnectedDisplay,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_deviceConnectedDisplay,  qt_static_metacall, 0, 0}
 };
 
 
@@ -87,8 +85,8 @@ const QMetaObject *deviceConnectedDisplay::metaObject() const
 
 void *deviceConnectedDisplay::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_deviceConnectedDisplay.stringdata0))
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_deviceConnectedDisplay.stringdata))
         return static_cast<void*>(const_cast< deviceConnectedDisplay*>(this));
     return QLabel::qt_metacast(_clname);
 }

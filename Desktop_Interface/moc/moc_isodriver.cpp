@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'isodriver.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'isodriver.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,111 +20,110 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_isoDriver_t {
     QByteArrayData data[95];
-    char stringdata0[1318];
+    char stringdata[1318];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_isoDriver_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_isoDriver_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_isoDriver_t qt_meta_stringdata_isoDriver = {
     {
-QT_MOC_LITERAL(0, 0, 9), // "isoDriver"
-QT_MOC_LITERAL(1, 10, 7), // "setGain"
-QT_MOC_LITERAL(2, 18, 0), // ""
-QT_MOC_LITERAL(3, 19, 7), // "newGain"
-QT_MOC_LITERAL(4, 27, 13), // "disableWindow"
-QT_MOC_LITERAL(5, 41, 7), // "enabled"
-QT_MOC_LITERAL(6, 49, 21), // "setCursorStatsVisible"
-QT_MOC_LITERAL(7, 71, 19), // "sendCursorStatsText"
-QT_MOC_LITERAL(8, 91, 4), // "text"
-QT_MOC_LITERAL(9, 96, 19), // "singleShotTriggered"
-QT_MOC_LITERAL(10, 116, 9), // "triggered"
-QT_MOC_LITERAL(11, 126, 13), // "multimeterMax"
-QT_MOC_LITERAL(12, 140, 13), // "multimeterMin"
-QT_MOC_LITERAL(13, 154, 14), // "multimeterMean"
-QT_MOC_LITERAL(14, 169, 13), // "multimeterRMS"
-QT_MOC_LITERAL(15, 183, 20), // "sendMultimeterLabel1"
-QT_MOC_LITERAL(16, 204, 20), // "sendMultimeterLabel2"
-QT_MOC_LITERAL(17, 225, 20), // "sendMultimeterLabel3"
-QT_MOC_LITERAL(18, 246, 20), // "sendMultimeterLabel4"
-QT_MOC_LITERAL(19, 267, 14), // "changeTimeAxis"
-QT_MOC_LITERAL(20, 282, 8), // "positive"
-QT_MOC_LITERAL(21, 291, 16), // "sendTriggerValue"
-QT_MOC_LITERAL(22, 308, 12), // "sendVmax_CH1"
-QT_MOC_LITERAL(23, 321, 12), // "sendVmin_CH1"
-QT_MOC_LITERAL(24, 334, 13), // "sendVmean_CH1"
-QT_MOC_LITERAL(25, 348, 12), // "sendVmax_CH2"
-QT_MOC_LITERAL(26, 361, 12), // "sendVmin_CH2"
-QT_MOC_LITERAL(27, 374, 13), // "sendVmean_CH2"
-QT_MOC_LITERAL(28, 388, 18), // "multimeterREnabled"
-QT_MOC_LITERAL(29, 407, 6), // "source"
-QT_MOC_LITERAL(30, 414, 9), // "setWindow"
-QT_MOC_LITERAL(31, 424, 9), // "newWindow"
-QT_MOC_LITERAL(32, 434, 15), // "setVoltageRange"
-QT_MOC_LITERAL(33, 450, 12), // "QWheelEvent*"
-QT_MOC_LITERAL(34, 463, 5), // "event"
-QT_MOC_LITERAL(35, 469, 9), // "timerTick"
-QT_MOC_LITERAL(36, 479, 15), // "pauseEnable_CH1"
-QT_MOC_LITERAL(37, 495, 15), // "pauseEnable_CH2"
-QT_MOC_LITERAL(38, 511, 22), // "pauseEnable_multimeter"
-QT_MOC_LITERAL(39, 534, 10), // "startTimer"
-QT_MOC_LITERAL(40, 545, 12), // "clearBuffers"
-QT_MOC_LITERAL(41, 558, 6), // "ch3751"
-QT_MOC_LITERAL(42, 565, 6), // "ch3752"
-QT_MOC_LITERAL(43, 572, 5), // "ch750"
-QT_MOC_LITERAL(44, 578, 14), // "setVisible_CH2"
-QT_MOC_LITERAL(45, 593, 7), // "visible"
-QT_MOC_LITERAL(46, 601, 11), // "gainBuffers"
-QT_MOC_LITERAL(47, 613, 10), // "multiplier"
-QT_MOC_LITERAL(48, 624, 8), // "gainTick"
-QT_MOC_LITERAL(49, 633, 11), // "setAutoGain"
-QT_MOC_LITERAL(50, 645, 15), // "graphMousePress"
-QT_MOC_LITERAL(51, 661, 12), // "QMouseEvent*"
-QT_MOC_LITERAL(52, 674, 17), // "graphMouseRelease"
-QT_MOC_LITERAL(53, 692, 14), // "graphMouseMove"
-QT_MOC_LITERAL(54, 707, 16), // "cursorEnableHori"
-QT_MOC_LITERAL(55, 724, 16), // "cursorEnableVert"
-QT_MOC_LITERAL(56, 741, 17), // "setTriggerEnabled"
-QT_MOC_LITERAL(57, 759, 15), // "setTriggerLevel"
-QT_MOC_LITERAL(58, 775, 5), // "level"
-QT_MOC_LITERAL(59, 781, 20), // "setSingleShotEnabled"
-QT_MOC_LITERAL(60, 802, 14), // "setTriggerMode"
-QT_MOC_LITERAL(61, 817, 7), // "newMode"
-QT_MOC_LITERAL(62, 825, 9), // "setAC_CH1"
-QT_MOC_LITERAL(63, 835, 9), // "setAC_CH2"
-QT_MOC_LITERAL(64, 845, 17), // "setMultimeterType"
-QT_MOC_LITERAL(65, 863, 4), // "type"
-QT_MOC_LITERAL(66, 868, 19), // "setSeriesResistance"
-QT_MOC_LITERAL(67, 888, 10), // "resistance"
-QT_MOC_LITERAL(68, 899, 15), // "multimeterStats"
-QT_MOC_LITERAL(69, 915, 8), // "enableMM"
-QT_MOC_LITERAL(70, 924, 18), // "setAutoMultimeterV"
-QT_MOC_LITERAL(71, 943, 18), // "setAutoMultimeterI"
-QT_MOC_LITERAL(72, 962, 18), // "setAutoMultimeterR"
-QT_MOC_LITERAL(73, 981, 18), // "setAutoMultimeterC"
-QT_MOC_LITERAL(74, 1000, 18), // "setForceMillivolts"
-QT_MOC_LITERAL(75, 1019, 17), // "setForceMilliamps"
-QT_MOC_LITERAL(76, 1037, 16), // "setForceKiloOhms"
-QT_MOC_LITERAL(77, 1054, 15), // "setForceUFarads"
-QT_MOC_LITERAL(78, 1070, 13), // "setForceVolts"
-QT_MOC_LITERAL(79, 1084, 12), // "setForceAmps"
-QT_MOC_LITERAL(80, 1097, 12), // "setForceOhms"
-QT_MOC_LITERAL(81, 1110, 15), // "setForceNFarads"
-QT_MOC_LITERAL(82, 1126, 26), // "setSerialDecodeEnabled_CH1"
-QT_MOC_LITERAL(83, 1153, 26), // "setSerialDecodeEnabled_CH2"
-QT_MOC_LITERAL(84, 1180, 9), // "setXYmode"
-QT_MOC_LITERAL(85, 1190, 23), // "triggerGroupStateChange"
-QT_MOC_LITERAL(86, 1214, 13), // "slowTimerTick"
-QT_MOC_LITERAL(87, 1228, 11), // "setTopRange"
-QT_MOC_LITERAL(88, 1240, 6), // "newTop"
-QT_MOC_LITERAL(89, 1247, 11), // "setBotRange"
-QT_MOC_LITERAL(90, 1259, 6), // "newBot"
-QT_MOC_LITERAL(91, 1266, 13), // "setTimeWindow"
-QT_MOC_LITERAL(92, 1280, 12), // "takeSnapshot"
-QT_MOC_LITERAL(93, 1293, 14), // "rSourceChanged"
-QT_MOC_LITERAL(94, 1308, 9) // "newSource"
-
+QT_MOC_LITERAL(0, 0, 9),
+QT_MOC_LITERAL(1, 10, 7),
+QT_MOC_LITERAL(2, 18, 0),
+QT_MOC_LITERAL(3, 19, 7),
+QT_MOC_LITERAL(4, 27, 13),
+QT_MOC_LITERAL(5, 41, 7),
+QT_MOC_LITERAL(6, 49, 21),
+QT_MOC_LITERAL(7, 71, 19),
+QT_MOC_LITERAL(8, 91, 4),
+QT_MOC_LITERAL(9, 96, 19),
+QT_MOC_LITERAL(10, 116, 9),
+QT_MOC_LITERAL(11, 126, 13),
+QT_MOC_LITERAL(12, 140, 13),
+QT_MOC_LITERAL(13, 154, 14),
+QT_MOC_LITERAL(14, 169, 13),
+QT_MOC_LITERAL(15, 183, 20),
+QT_MOC_LITERAL(16, 204, 20),
+QT_MOC_LITERAL(17, 225, 20),
+QT_MOC_LITERAL(18, 246, 20),
+QT_MOC_LITERAL(19, 267, 14),
+QT_MOC_LITERAL(20, 282, 8),
+QT_MOC_LITERAL(21, 291, 16),
+QT_MOC_LITERAL(22, 308, 12),
+QT_MOC_LITERAL(23, 321, 12),
+QT_MOC_LITERAL(24, 334, 13),
+QT_MOC_LITERAL(25, 348, 12),
+QT_MOC_LITERAL(26, 361, 12),
+QT_MOC_LITERAL(27, 374, 13),
+QT_MOC_LITERAL(28, 388, 18),
+QT_MOC_LITERAL(29, 407, 6),
+QT_MOC_LITERAL(30, 414, 9),
+QT_MOC_LITERAL(31, 424, 9),
+QT_MOC_LITERAL(32, 434, 15),
+QT_MOC_LITERAL(33, 450, 12),
+QT_MOC_LITERAL(34, 463, 5),
+QT_MOC_LITERAL(35, 469, 9),
+QT_MOC_LITERAL(36, 479, 15),
+QT_MOC_LITERAL(37, 495, 15),
+QT_MOC_LITERAL(38, 511, 22),
+QT_MOC_LITERAL(39, 534, 10),
+QT_MOC_LITERAL(40, 545, 12),
+QT_MOC_LITERAL(41, 558, 6),
+QT_MOC_LITERAL(42, 565, 6),
+QT_MOC_LITERAL(43, 572, 5),
+QT_MOC_LITERAL(44, 578, 14),
+QT_MOC_LITERAL(45, 593, 7),
+QT_MOC_LITERAL(46, 601, 11),
+QT_MOC_LITERAL(47, 613, 10),
+QT_MOC_LITERAL(48, 624, 8),
+QT_MOC_LITERAL(49, 633, 11),
+QT_MOC_LITERAL(50, 645, 15),
+QT_MOC_LITERAL(51, 661, 12),
+QT_MOC_LITERAL(52, 674, 17),
+QT_MOC_LITERAL(53, 692, 14),
+QT_MOC_LITERAL(54, 707, 16),
+QT_MOC_LITERAL(55, 724, 16),
+QT_MOC_LITERAL(56, 741, 17),
+QT_MOC_LITERAL(57, 759, 15),
+QT_MOC_LITERAL(58, 775, 5),
+QT_MOC_LITERAL(59, 781, 20),
+QT_MOC_LITERAL(60, 802, 14),
+QT_MOC_LITERAL(61, 817, 7),
+QT_MOC_LITERAL(62, 825, 9),
+QT_MOC_LITERAL(63, 835, 9),
+QT_MOC_LITERAL(64, 845, 17),
+QT_MOC_LITERAL(65, 863, 4),
+QT_MOC_LITERAL(66, 868, 19),
+QT_MOC_LITERAL(67, 888, 10),
+QT_MOC_LITERAL(68, 899, 15),
+QT_MOC_LITERAL(69, 915, 8),
+QT_MOC_LITERAL(70, 924, 18),
+QT_MOC_LITERAL(71, 943, 18),
+QT_MOC_LITERAL(72, 962, 18),
+QT_MOC_LITERAL(73, 981, 18),
+QT_MOC_LITERAL(74, 1000, 18),
+QT_MOC_LITERAL(75, 1019, 17),
+QT_MOC_LITERAL(76, 1037, 16),
+QT_MOC_LITERAL(77, 1054, 15),
+QT_MOC_LITERAL(78, 1070, 13),
+QT_MOC_LITERAL(79, 1084, 12),
+QT_MOC_LITERAL(80, 1097, 12),
+QT_MOC_LITERAL(81, 1110, 15),
+QT_MOC_LITERAL(82, 1126, 26),
+QT_MOC_LITERAL(83, 1153, 26),
+QT_MOC_LITERAL(84, 1180, 9),
+QT_MOC_LITERAL(85, 1190, 23),
+QT_MOC_LITERAL(86, 1214, 13),
+QT_MOC_LITERAL(87, 1228, 11),
+QT_MOC_LITERAL(88, 1240, 6),
+QT_MOC_LITERAL(89, 1247, 11),
+QT_MOC_LITERAL(90, 1259, 6),
+QT_MOC_LITERAL(91, 1266, 13),
+QT_MOC_LITERAL(92, 1280, 12),
+QT_MOC_LITERAL(93, 1293, 14),
+QT_MOC_LITERAL(94, 1308, 9)
     },
     "isoDriver\0setGain\0\0newGain\0disableWindow\0"
     "enabled\0setCursorStatsVisible\0"
@@ -335,7 +334,6 @@ void isoDriver::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         isoDriver *_t = static_cast<isoDriver *>(_o);
-        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->setGain((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 1: _t->disableWindow((*reinterpret_cast< bool(*)>(_a[1]))); break;
@@ -550,7 +548,7 @@ void isoDriver::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
 
 const QMetaObject isoDriver::staticMetaObject = {
     { &QLabel::staticMetaObject, qt_meta_stringdata_isoDriver.data,
-      qt_meta_data_isoDriver,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_isoDriver,  qt_static_metacall, 0, 0}
 };
 
 
@@ -561,8 +559,8 @@ const QMetaObject *isoDriver::metaObject() const
 
 void *isoDriver::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_isoDriver.stringdata0))
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_isoDriver.stringdata))
         return static_cast<void*>(const_cast< isoDriver*>(this));
     return QLabel::qt_metacast(_clname);
 }
@@ -587,154 +585,154 @@ int isoDriver::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void isoDriver::setGain(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void isoDriver::disableWindow(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
 void isoDriver::setCursorStatsVisible(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
 void isoDriver::sendCursorStatsText(QString _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
 void isoDriver::singleShotTriggered(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 
 // SIGNAL 5
 void isoDriver::multimeterMax(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 
 // SIGNAL 6
 void isoDriver::multimeterMin(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 6, _a);
 }
 
 // SIGNAL 7
 void isoDriver::multimeterMean(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 7, _a);
 }
 
 // SIGNAL 8
 void isoDriver::multimeterRMS(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 8, _a);
 }
 
 // SIGNAL 9
 void isoDriver::sendMultimeterLabel1(QString _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 9, _a);
 }
 
 // SIGNAL 10
 void isoDriver::sendMultimeterLabel2(QString _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 10, _a);
 }
 
 // SIGNAL 11
 void isoDriver::sendMultimeterLabel3(QString _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 11, _a);
 }
 
 // SIGNAL 12
 void isoDriver::sendMultimeterLabel4(QString _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 12, _a);
 }
 
 // SIGNAL 13
 void isoDriver::changeTimeAxis(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 13, _a);
 }
 
 // SIGNAL 14
 void isoDriver::sendTriggerValue(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 14, _a);
 }
 
 // SIGNAL 15
 void isoDriver::sendVmax_CH1(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 15, _a);
 }
 
 // SIGNAL 16
 void isoDriver::sendVmin_CH1(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 16, _a);
 }
 
 // SIGNAL 17
 void isoDriver::sendVmean_CH1(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 17, _a);
 }
 
 // SIGNAL 18
 void isoDriver::sendVmax_CH2(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 18, _a);
 }
 
 // SIGNAL 19
 void isoDriver::sendVmin_CH2(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 19, _a);
 }
 
 // SIGNAL 20
 void isoDriver::sendVmean_CH2(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 20, _a);
 }
 
 // SIGNAL 21
 void isoDriver::multimeterREnabled(int _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 21, _a);
 }
 QT_END_MOC_NAMESPACE

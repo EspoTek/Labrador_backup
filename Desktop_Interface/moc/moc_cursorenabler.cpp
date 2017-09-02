@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'cursorenabler.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'cursorenabler.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,26 +20,25 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_cursorEnabler_t {
     QByteArrayData data[10];
-    char stringdata0[99];
+    char stringdata[99];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_cursorEnabler_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_cursorEnabler_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_cursorEnabler_t qt_meta_stringdata_cursorEnabler = {
     {
-QT_MOC_LITERAL(0, 0, 13), // "cursorEnabler"
-QT_MOC_LITERAL(1, 14, 8), // "tickHori"
-QT_MOC_LITERAL(2, 23, 0), // ""
-QT_MOC_LITERAL(3, 24, 8), // "tickVert"
-QT_MOC_LITERAL(4, 33, 12), // "passOnSignal"
-QT_MOC_LITERAL(5, 46, 12), // "QMouseEvent*"
-QT_MOC_LITERAL(6, 59, 5), // "event"
-QT_MOC_LITERAL(7, 65, 11), // "setTurnedOn"
-QT_MOC_LITERAL(8, 77, 7), // "enabled"
-QT_MOC_LITERAL(9, 85, 13) // "clickDetected"
-
+QT_MOC_LITERAL(0, 0, 13),
+QT_MOC_LITERAL(1, 14, 8),
+QT_MOC_LITERAL(2, 23, 0),
+QT_MOC_LITERAL(3, 24, 8),
+QT_MOC_LITERAL(4, 33, 12),
+QT_MOC_LITERAL(5, 46, 12),
+QT_MOC_LITERAL(6, 59, 5),
+QT_MOC_LITERAL(7, 65, 11),
+QT_MOC_LITERAL(8, 77, 7),
+QT_MOC_LITERAL(9, 85, 13)
     },
     "cursorEnabler\0tickHori\0\0tickVert\0"
     "passOnSignal\0QMouseEvent*\0event\0"
@@ -85,7 +84,6 @@ void cursorEnabler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         cursorEnabler *_t = static_cast<cursorEnabler *>(_o);
-        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->tickHori((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 1: _t->tickVert((*reinterpret_cast< bool(*)>(_a[1]))); break;
@@ -120,7 +118,7 @@ void cursorEnabler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
 
 const QMetaObject cursorEnabler::staticMetaObject = {
     { &QLabel::staticMetaObject, qt_meta_stringdata_cursorEnabler.data,
-      qt_meta_data_cursorEnabler,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_cursorEnabler,  qt_static_metacall, 0, 0}
 };
 
 
@@ -131,8 +129,8 @@ const QMetaObject *cursorEnabler::metaObject() const
 
 void *cursorEnabler::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_cursorEnabler.stringdata0))
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_cursorEnabler.stringdata))
         return static_cast<void*>(const_cast< cursorEnabler*>(this));
     return QLabel::qt_metacast(_clname);
 }
@@ -157,21 +155,21 @@ int cursorEnabler::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void cursorEnabler::tickHori(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void cursorEnabler::tickVert(bool _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
 void cursorEnabler::passOnSignal(QMouseEvent * _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_END_MOC_NAMESPACE

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'functiongencontrol.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'functiongencontrol.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,40 +20,39 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_functionGenControl_t {
     QByteArrayData data[24];
-    char stringdata0[333];
+    char stringdata[333];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_functionGenControl_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_functionGenControl_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_functionGenControl_t qt_meta_stringdata_functionGenControl = {
     {
-QT_MOC_LITERAL(0, 0, 18), // "functionGenControl"
-QT_MOC_LITERAL(1, 19, 19), // "functionGenToUpdate"
-QT_MOC_LITERAL(2, 39, 0), // ""
-QT_MOC_LITERAL(3, 40, 7), // "channel"
-QT_MOC_LITERAL(4, 48, 19), // "functionGenControl*"
-QT_MOC_LITERAL(5, 68, 11), // "fGenControl"
-QT_MOC_LITERAL(6, 80, 14), // "setMaxFreq_CH1"
-QT_MOC_LITERAL(7, 95, 7), // "maxFreq"
-QT_MOC_LITERAL(8, 103, 14), // "setMinFreq_CH1"
-QT_MOC_LITERAL(9, 118, 7), // "minFreq"
-QT_MOC_LITERAL(10, 126, 14), // "setMaxFreq_CH2"
-QT_MOC_LITERAL(11, 141, 14), // "setMinFreq_CH2"
-QT_MOC_LITERAL(12, 156, 16), // "waveformName_CH1"
-QT_MOC_LITERAL(13, 173, 7), // "newName"
-QT_MOC_LITERAL(14, 181, 14), // "freqUpdate_CH1"
-QT_MOC_LITERAL(15, 196, 7), // "newFreq"
-QT_MOC_LITERAL(16, 204, 19), // "amplitudeUpdate_CH1"
-QT_MOC_LITERAL(17, 224, 12), // "newAmplitude"
-QT_MOC_LITERAL(18, 237, 16), // "offsetUpdate_CH1"
-QT_MOC_LITERAL(19, 254, 9), // "newOffset"
-QT_MOC_LITERAL(20, 264, 16), // "waveformName_CH2"
-QT_MOC_LITERAL(21, 281, 14), // "freqUpdate_CH2"
-QT_MOC_LITERAL(22, 296, 19), // "amplitudeUpdate_CH2"
-QT_MOC_LITERAL(23, 316, 16) // "offsetUpdate_CH2"
-
+QT_MOC_LITERAL(0, 0, 18),
+QT_MOC_LITERAL(1, 19, 19),
+QT_MOC_LITERAL(2, 39, 0),
+QT_MOC_LITERAL(3, 40, 7),
+QT_MOC_LITERAL(4, 48, 19),
+QT_MOC_LITERAL(5, 68, 11),
+QT_MOC_LITERAL(6, 80, 14),
+QT_MOC_LITERAL(7, 95, 7),
+QT_MOC_LITERAL(8, 103, 14),
+QT_MOC_LITERAL(9, 118, 7),
+QT_MOC_LITERAL(10, 126, 14),
+QT_MOC_LITERAL(11, 141, 14),
+QT_MOC_LITERAL(12, 156, 16),
+QT_MOC_LITERAL(13, 173, 7),
+QT_MOC_LITERAL(14, 181, 14),
+QT_MOC_LITERAL(15, 196, 7),
+QT_MOC_LITERAL(16, 204, 19),
+QT_MOC_LITERAL(17, 224, 12),
+QT_MOC_LITERAL(18, 237, 16),
+QT_MOC_LITERAL(19, 254, 9),
+QT_MOC_LITERAL(20, 264, 16),
+QT_MOC_LITERAL(21, 281, 14),
+QT_MOC_LITERAL(22, 296, 19),
+QT_MOC_LITERAL(23, 316, 16)
     },
     "functionGenControl\0functionGenToUpdate\0"
     "\0channel\0functionGenControl*\0fGenControl\0"
@@ -121,7 +120,6 @@ void functionGenControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         functionGenControl *_t = static_cast<functionGenControl *>(_o);
-        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->functionGenToUpdate((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< functionGenControl*(*)>(_a[2]))); break;
         case 1: _t->setMaxFreq_CH1((*reinterpret_cast< double(*)>(_a[1]))); break;
@@ -187,7 +185,7 @@ void functionGenControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
 
 const QMetaObject functionGenControl::staticMetaObject = {
     { &QLabel::staticMetaObject, qt_meta_stringdata_functionGenControl.data,
-      qt_meta_data_functionGenControl,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_functionGenControl,  qt_static_metacall, 0, 0}
 };
 
 
@@ -198,8 +196,8 @@ const QMetaObject *functionGenControl::metaObject() const
 
 void *functionGenControl::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_functionGenControl.stringdata0))
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_functionGenControl.stringdata))
         return static_cast<void*>(const_cast< functionGenControl*>(this));
     return QLabel::qt_metacast(_clname);
 }
@@ -224,35 +222,35 @@ int functionGenControl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void functionGenControl::functionGenToUpdate(int _t1, functionGenControl * _t2)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void functionGenControl::setMaxFreq_CH1(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
 void functionGenControl::setMinFreq_CH1(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
 void functionGenControl::setMaxFreq_CH2(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
 void functionGenControl::setMinFreq_CH2(double _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 QT_END_MOC_NAMESPACE

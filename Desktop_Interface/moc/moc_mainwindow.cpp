@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,96 +20,95 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[80];
-    char stringdata0[1773];
+    char stringdata[1773];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_MainWindow_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
-QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 26), // "on_actionGain0_5_triggered"
-QT_MOC_LITERAL(2, 38, 0), // ""
-QT_MOC_LITERAL(3, 39, 24), // "on_actionGain1_triggered"
-QT_MOC_LITERAL(4, 64, 24), // "on_actionGain2_triggered"
-QT_MOC_LITERAL(5, 89, 24), // "on_actionGain4_triggered"
-QT_MOC_LITERAL(6, 114, 24), // "on_actionGain8_triggered"
-QT_MOC_LITERAL(7, 139, 25), // "on_actionGain16_triggered"
-QT_MOC_LITERAL(8, 165, 25), // "on_actionGain32_triggered"
-QT_MOC_LITERAL(9, 191, 25), // "on_actionGain64_triggered"
-QT_MOC_LITERAL(10, 217, 27), // "on_actionGainAuto_triggered"
-QT_MOC_LITERAL(11, 245, 31), // "on_actionCursor_Stats_triggered"
-QT_MOC_LITERAL(12, 277, 7), // "checked"
-QT_MOC_LITERAL(13, 285, 45), // "on_actionAutomatically_Enable..."
-QT_MOC_LITERAL(14, 331, 4), // "arg1"
-QT_MOC_LITERAL(15, 336, 22), // "on_action60FPS_toggled"
-QT_MOC_LITERAL(16, 359, 7), // "enabled"
-QT_MOC_LITERAL(17, 367, 22), // "on_action30FPS_toggled"
-QT_MOC_LITERAL(18, 390, 22), // "on_action20FPS_toggled"
-QT_MOC_LITERAL(19, 413, 22), // "on_action15FPS_toggled"
-QT_MOC_LITERAL(20, 436, 22), // "on_action10FPS_toggled"
-QT_MOC_LITERAL(21, 459, 21), // "on_action5FPS_toggled"
-QT_MOC_LITERAL(22, 481, 34), // "on_actionSnap_to_Cursors_trig..."
-QT_MOC_LITERAL(23, 516, 33), // "on_actionEnter_Manually_trigg..."
-QT_MOC_LITERAL(24, 550, 21), // "connectDisplaySignals"
-QT_MOC_LITERAL(25, 572, 15), // "calibrateStage2"
-QT_MOC_LITERAL(26, 588, 15), // "calibrateStage3"
-QT_MOC_LITERAL(27, 604, 20), // "on_action300_toggled"
-QT_MOC_LITERAL(28, 625, 20), // "on_action600_toggled"
-QT_MOC_LITERAL(29, 646, 21), // "on_action1200_toggled"
-QT_MOC_LITERAL(30, 668, 21), // "on_action2400_toggled"
-QT_MOC_LITERAL(31, 690, 21), // "on_action4800_toggled"
-QT_MOC_LITERAL(32, 712, 21), // "on_action9600_toggled"
-QT_MOC_LITERAL(33, 734, 22), // "on_action14400_toggled"
-QT_MOC_LITERAL(34, 757, 22), // "on_action19200_toggled"
-QT_MOC_LITERAL(35, 780, 22), // "on_action28800_toggled"
-QT_MOC_LITERAL(36, 803, 22), // "on_action38400_toggled"
-QT_MOC_LITERAL(37, 826, 22), // "on_action57600_toggled"
-QT_MOC_LITERAL(38, 849, 23), // "on_action115200_toggled"
-QT_MOC_LITERAL(39, 873, 22), // "on_action300_2_toggled"
-QT_MOC_LITERAL(40, 896, 22), // "on_action600_2_toggled"
-QT_MOC_LITERAL(41, 919, 23), // "on_action1200_2_toggled"
-QT_MOC_LITERAL(42, 943, 23), // "on_action2400_2_toggled"
-QT_MOC_LITERAL(43, 967, 23), // "on_action4800_2_toggled"
-QT_MOC_LITERAL(44, 991, 23), // "on_action9600_2_toggled"
-QT_MOC_LITERAL(45, 1015, 24), // "on_action14400_2_toggled"
-QT_MOC_LITERAL(46, 1040, 24), // "on_action19200_2_toggled"
-QT_MOC_LITERAL(47, 1065, 24), // "on_action28800_2_toggled"
-QT_MOC_LITERAL(48, 1090, 24), // "on_action38400_2_toggled"
-QT_MOC_LITERAL(49, 1115, 24), // "on_action57600_2_toggled"
-QT_MOC_LITERAL(50, 1140, 25), // "on_action115200_2_toggled"
-QT_MOC_LITERAL(51, 1166, 17), // "cycleBaudRate_CH1"
-QT_MOC_LITERAL(52, 1184, 26), // "cycleBaudRateBackwards_CH1"
-QT_MOC_LITERAL(53, 1211, 17), // "cycleBaudRate_CH2"
-QT_MOC_LITERAL(54, 1229, 26), // "cycleBaudRateBackwards_CH2"
-QT_MOC_LITERAL(55, 1256, 21), // "timeBaseNeedsChanging"
-QT_MOC_LITERAL(56, 1278, 8), // "positive"
-QT_MOC_LITERAL(57, 1287, 31), // "on_actionForce_Square_triggered"
-QT_MOC_LITERAL(58, 1319, 10), // "helloWorld"
-QT_MOC_LITERAL(59, 1330, 16), // "arrowUpTriggered"
-QT_MOC_LITERAL(60, 1347, 18), // "arrowDownTriggered"
-QT_MOC_LITERAL(61, 1366, 20), // "ctrlArrowUpTriggered"
-QT_MOC_LITERAL(62, 1387, 22), // "ctrlArrowDownTriggered"
-QT_MOC_LITERAL(63, 1410, 14), // "cycleDelayLeft"
-QT_MOC_LITERAL(64, 1425, 15), // "cycleDelayRight"
-QT_MOC_LITERAL(65, 1441, 23), // "enableLabradorDebugging"
-QT_MOC_LITERAL(66, 1465, 26), // "on_actionAuto_Lock_toggled"
-QT_MOC_LITERAL(67, 1492, 25), // "on_actionRecord_triggered"
-QT_MOC_LITERAL(68, 1518, 32), // "on_actionTake_Snapshot_triggered"
-QT_MOC_LITERAL(69, 1551, 9), // "reinitUsb"
-QT_MOC_LITERAL(70, 1561, 15), // "reinitUsbStage2"
-QT_MOC_LITERAL(71, 1577, 13), // "resetUsbState"
-QT_MOC_LITERAL(72, 1591, 19), // "rSourceIndexChanged"
-QT_MOC_LITERAL(73, 1611, 9), // "newSource"
-QT_MOC_LITERAL(74, 1621, 21), // "multimeterStateChange"
-QT_MOC_LITERAL(75, 1643, 5), // "state"
-QT_MOC_LITERAL(76, 1649, 28), // "on_actionCalibrate_triggered"
-QT_MOC_LITERAL(77, 1678, 24), // "on_actionLo_bw_triggered"
-QT_MOC_LITERAL(78, 1703, 34), // "on_actionSingle_ep_msync_trig..."
-QT_MOC_LITERAL(79, 1738, 34) // "on_actionSingle_ep_async_trig..."
-
+QT_MOC_LITERAL(0, 0, 10),
+QT_MOC_LITERAL(1, 11, 26),
+QT_MOC_LITERAL(2, 38, 0),
+QT_MOC_LITERAL(3, 39, 24),
+QT_MOC_LITERAL(4, 64, 24),
+QT_MOC_LITERAL(5, 89, 24),
+QT_MOC_LITERAL(6, 114, 24),
+QT_MOC_LITERAL(7, 139, 25),
+QT_MOC_LITERAL(8, 165, 25),
+QT_MOC_LITERAL(9, 191, 25),
+QT_MOC_LITERAL(10, 217, 27),
+QT_MOC_LITERAL(11, 245, 31),
+QT_MOC_LITERAL(12, 277, 7),
+QT_MOC_LITERAL(13, 285, 45),
+QT_MOC_LITERAL(14, 331, 4),
+QT_MOC_LITERAL(15, 336, 22),
+QT_MOC_LITERAL(16, 359, 7),
+QT_MOC_LITERAL(17, 367, 22),
+QT_MOC_LITERAL(18, 390, 22),
+QT_MOC_LITERAL(19, 413, 22),
+QT_MOC_LITERAL(20, 436, 22),
+QT_MOC_LITERAL(21, 459, 21),
+QT_MOC_LITERAL(22, 481, 34),
+QT_MOC_LITERAL(23, 516, 33),
+QT_MOC_LITERAL(24, 550, 21),
+QT_MOC_LITERAL(25, 572, 15),
+QT_MOC_LITERAL(26, 588, 15),
+QT_MOC_LITERAL(27, 604, 20),
+QT_MOC_LITERAL(28, 625, 20),
+QT_MOC_LITERAL(29, 646, 21),
+QT_MOC_LITERAL(30, 668, 21),
+QT_MOC_LITERAL(31, 690, 21),
+QT_MOC_LITERAL(32, 712, 21),
+QT_MOC_LITERAL(33, 734, 22),
+QT_MOC_LITERAL(34, 757, 22),
+QT_MOC_LITERAL(35, 780, 22),
+QT_MOC_LITERAL(36, 803, 22),
+QT_MOC_LITERAL(37, 826, 22),
+QT_MOC_LITERAL(38, 849, 23),
+QT_MOC_LITERAL(39, 873, 22),
+QT_MOC_LITERAL(40, 896, 22),
+QT_MOC_LITERAL(41, 919, 23),
+QT_MOC_LITERAL(42, 943, 23),
+QT_MOC_LITERAL(43, 967, 23),
+QT_MOC_LITERAL(44, 991, 23),
+QT_MOC_LITERAL(45, 1015, 24),
+QT_MOC_LITERAL(46, 1040, 24),
+QT_MOC_LITERAL(47, 1065, 24),
+QT_MOC_LITERAL(48, 1090, 24),
+QT_MOC_LITERAL(49, 1115, 24),
+QT_MOC_LITERAL(50, 1140, 25),
+QT_MOC_LITERAL(51, 1166, 17),
+QT_MOC_LITERAL(52, 1184, 26),
+QT_MOC_LITERAL(53, 1211, 17),
+QT_MOC_LITERAL(54, 1229, 26),
+QT_MOC_LITERAL(55, 1256, 21),
+QT_MOC_LITERAL(56, 1278, 8),
+QT_MOC_LITERAL(57, 1287, 31),
+QT_MOC_LITERAL(58, 1319, 10),
+QT_MOC_LITERAL(59, 1330, 16),
+QT_MOC_LITERAL(60, 1347, 18),
+QT_MOC_LITERAL(61, 1366, 20),
+QT_MOC_LITERAL(62, 1387, 22),
+QT_MOC_LITERAL(63, 1410, 14),
+QT_MOC_LITERAL(64, 1425, 15),
+QT_MOC_LITERAL(65, 1441, 23),
+QT_MOC_LITERAL(66, 1465, 26),
+QT_MOC_LITERAL(67, 1492, 25),
+QT_MOC_LITERAL(68, 1518, 32),
+QT_MOC_LITERAL(69, 1551, 9),
+QT_MOC_LITERAL(70, 1561, 15),
+QT_MOC_LITERAL(71, 1577, 13),
+QT_MOC_LITERAL(72, 1591, 19),
+QT_MOC_LITERAL(73, 1611, 9),
+QT_MOC_LITERAL(74, 1621, 21),
+QT_MOC_LITERAL(75, 1643, 5),
+QT_MOC_LITERAL(76, 1649, 28),
+QT_MOC_LITERAL(77, 1678, 24),
+QT_MOC_LITERAL(78, 1703, 34),
+QT_MOC_LITERAL(79, 1738, 34)
     },
     "MainWindow\0on_actionGain0_5_triggered\0"
     "\0on_actionGain1_triggered\0"
@@ -334,7 +333,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         MainWindow *_t = static_cast<MainWindow *>(_o);
-        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_actionGain0_5_triggered(); break;
         case 1: _t->on_actionGain1_triggered(); break;
@@ -415,7 +413,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 
 const QMetaObject MainWindow::staticMetaObject = {
     { &QMainWindow::staticMetaObject, qt_meta_stringdata_MainWindow.data,
-      qt_meta_data_MainWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_MainWindow,  qt_static_metacall, 0, 0}
 };
 
 
@@ -426,8 +424,8 @@ const QMetaObject *MainWindow::metaObject() const
 
 void *MainWindow::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_MainWindow.stringdata0))
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_MainWindow.stringdata))
         return static_cast<void*>(const_cast< MainWindow*>(this));
     return QMainWindow::qt_metacast(_clname);
 }

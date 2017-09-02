@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'timedtickbox.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'timedtickbox.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,22 +20,21 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_timedTickBox_t {
     QByteArrayData data[6];
-    char stringdata0[55];
+    char stringdata[55];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_timedTickBox_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_timedTickBox_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_timedTickBox_t qt_meta_stringdata_timedTickBox = {
     {
-QT_MOC_LITERAL(0, 0, 12), // "timedTickBox"
-QT_MOC_LITERAL(1, 13, 10), // "resetTimer"
-QT_MOC_LITERAL(2, 24, 0), // ""
-QT_MOC_LITERAL(3, 25, 9), // "timerTick"
-QT_MOC_LITERAL(4, 35, 11), // "enableTimer"
-QT_MOC_LITERAL(5, 47, 7) // "enabled"
-
+QT_MOC_LITERAL(0, 0, 12),
+QT_MOC_LITERAL(1, 13, 10),
+QT_MOC_LITERAL(2, 24, 0),
+QT_MOC_LITERAL(3, 25, 9),
+QT_MOC_LITERAL(4, 35, 11),
+QT_MOC_LITERAL(5, 47, 7)
     },
     "timedTickBox\0resetTimer\0\0timerTick\0"
     "enableTimer\0enabled"
@@ -72,7 +71,6 @@ void timedTickBox::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         timedTickBox *_t = static_cast<timedTickBox *>(_o);
-        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->resetTimer(); break;
         case 1: _t->timerTick(); break;
@@ -84,7 +82,7 @@ void timedTickBox::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
 
 const QMetaObject timedTickBox::staticMetaObject = {
     { &QCheckBox::staticMetaObject, qt_meta_stringdata_timedTickBox.data,
-      qt_meta_data_timedTickBox,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_timedTickBox,  qt_static_metacall, 0, 0}
 };
 
 
@@ -95,8 +93,8 @@ const QMetaObject *timedTickBox::metaObject() const
 
 void *timedTickBox::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_timedTickBox.stringdata0))
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_timedTickBox.stringdata))
         return static_cast<void*>(const_cast< timedTickBox*>(this));
     return QCheckBox::qt_metacast(_clname);
 }

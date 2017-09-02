@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'voltagespinbox.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'voltagespinbox.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,22 +20,21 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_voltageSpinBox_t {
     QByteArrayData data[6];
-    char stringdata0[44];
+    char stringdata[44];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_voltageSpinBox_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_voltageSpinBox_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_voltageSpinBox_t qt_meta_stringdata_voltageSpinBox = {
     {
-QT_MOC_LITERAL(0, 0, 14), // "voltageSpinBox"
-QT_MOC_LITERAL(1, 15, 6), // "setMax"
-QT_MOC_LITERAL(2, 22, 0), // ""
-QT_MOC_LITERAL(3, 23, 6), // "newMax"
-QT_MOC_LITERAL(4, 30, 6), // "setMin"
-QT_MOC_LITERAL(5, 37, 6) // "newMin"
-
+QT_MOC_LITERAL(0, 0, 14),
+QT_MOC_LITERAL(1, 15, 6),
+QT_MOC_LITERAL(2, 22, 0),
+QT_MOC_LITERAL(3, 23, 6),
+QT_MOC_LITERAL(4, 30, 6),
+QT_MOC_LITERAL(5, 37, 6)
     },
     "voltageSpinBox\0setMax\0\0newMax\0setMin\0"
     "newMin"
@@ -70,7 +69,6 @@ void voltageSpinBox::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         voltageSpinBox *_t = static_cast<voltageSpinBox *>(_o);
-        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->setMax((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 1: _t->setMin((*reinterpret_cast< double(*)>(_a[1]))); break;
@@ -81,7 +79,7 @@ void voltageSpinBox::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
 
 const QMetaObject voltageSpinBox::staticMetaObject = {
     { &QDoubleSpinBox::staticMetaObject, qt_meta_stringdata_voltageSpinBox.data,
-      qt_meta_data_voltageSpinBox,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_voltageSpinBox,  qt_static_metacall, 0, 0}
 };
 
 
@@ -92,8 +90,8 @@ const QMetaObject *voltageSpinBox::metaObject() const
 
 void *voltageSpinBox::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_voltageSpinBox.stringdata0))
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_voltageSpinBox.stringdata))
         return static_cast<void*>(const_cast< voltageSpinBox*>(this));
     return QDoubleSpinBox::qt_metacast(_clname);
 }

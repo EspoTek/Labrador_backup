@@ -101,6 +101,22 @@ win32{
 
 unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux
 
+contains(QT_ARCH, arm) {
+        message("Building for Raspberry Pi")
+        #libusb include
+        unix:!android:!macx:LIBS += -lusb-1.0  ##make sure you have the libusb-1.0-0-dev package!
+        unix:!android:!macx:INCLUDEPATH += build_linux/libusb
+        unix:!android:!macx:DEPENDPATH += build_linux/libusb
+
+        #libdfuprog include
+        unix:!android:!macx:LIBS += -L$$PWD/build_linux/libdfuprog/lib/arm -ldfuprog-0.9
+        unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux/libdfuprog/include
+        unix:!android:!macx:DEPENDPATH += $$PWD/build_linux/libdfuprog/include
+        QMAKE_CFLAGS += -fsigned-char
+        QMAKE_CXXFLAGS += -fsigned-char
+        DEFINES += "PLATFORM_RASPBERRY_PI"
+        #All ARM-Linux GCC treats char as unsigned by default???
+} else {
     contains(QT_ARCH, i386) {
         message("Building for Linux (x86)")
         unix:!android:!macx:LIBS += -lusb-1.0  ##make sure you have the libusb-1.0-0-dev package!
@@ -123,6 +139,7 @@ unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux
         unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux/libdfuprog/include
         unix:!android:!macx:DEPENDPATH += $$PWD/build_linux/libdfuprog/include
     }
+}
 
 
 

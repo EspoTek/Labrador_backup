@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'espospinbox.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'espospinbox.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,26 +20,25 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_espoSpinBox_t {
     QByteArrayData data[10];
-    char stringdata0[84];
+    char stringdata[84];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_espoSpinBox_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_espoSpinBox_t, stringdata) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_espoSpinBox_t qt_meta_stringdata_espoSpinBox = {
     {
-QT_MOC_LITERAL(0, 0, 11), // "espoSpinBox"
-QT_MOC_LITERAL(1, 12, 14), // "maximumChanged"
-QT_MOC_LITERAL(2, 27, 0), // ""
-QT_MOC_LITERAL(3, 28, 6), // "linked"
-QT_MOC_LITERAL(4, 35, 6), // "setMax"
-QT_MOC_LITERAL(5, 42, 6), // "newMax"
-QT_MOC_LITERAL(6, 49, 6), // "setMin"
-QT_MOC_LITERAL(7, 56, 6), // "newMin"
-QT_MOC_LITERAL(8, 63, 14), // "changeStepping"
-QT_MOC_LITERAL(9, 78, 5) // "value"
-
+QT_MOC_LITERAL(0, 0, 11),
+QT_MOC_LITERAL(1, 12, 14),
+QT_MOC_LITERAL(2, 27, 0),
+QT_MOC_LITERAL(3, 28, 6),
+QT_MOC_LITERAL(4, 35, 6),
+QT_MOC_LITERAL(5, 42, 6),
+QT_MOC_LITERAL(6, 49, 6),
+QT_MOC_LITERAL(7, 56, 6),
+QT_MOC_LITERAL(8, 63, 14),
+QT_MOC_LITERAL(9, 78, 5)
     },
     "espoSpinBox\0maximumChanged\0\0linked\0"
     "setMax\0newMax\0setMin\0newMin\0changeStepping\0"
@@ -79,7 +78,6 @@ void espoSpinBox::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         espoSpinBox *_t = static_cast<espoSpinBox *>(_o);
-        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->maximumChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 1: _t->setMax((*reinterpret_cast< double(*)>(_a[1]))); break;
@@ -92,7 +90,7 @@ void espoSpinBox::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
 
 const QMetaObject espoSpinBox::staticMetaObject = {
     { &QDoubleSpinBox::staticMetaObject, qt_meta_stringdata_espoSpinBox.data,
-      qt_meta_data_espoSpinBox,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_espoSpinBox,  qt_static_metacall, 0, 0}
 };
 
 
@@ -103,8 +101,8 @@ const QMetaObject *espoSpinBox::metaObject() const
 
 void *espoSpinBox::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_espoSpinBox.stringdata0))
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_espoSpinBox.stringdata))
         return static_cast<void*>(const_cast< espoSpinBox*>(this));
     return QDoubleSpinBox::qt_metacast(_clname);
 }
