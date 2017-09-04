@@ -16,7 +16,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 TARGET = Labrador
 TEMPLATE = app
 
-QCP_VER = 2
+QCP_VER = 1
 DEFINES += "QCP_VER=$${QCP_VER}"
 equals(QCP_VER,"2"){
     DEFINES += QCUSTOMPLOT_USE_OPENGL
@@ -99,45 +99,46 @@ win32{
 ################    GNU/LINUX BUILD ONLY    ################
 ###########################################################
 
-unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux
+unix:!android:!macx{
+    INCLUDEPATH += $$PWD/build_linux
+    contains(QT_ARCH, arm) {
+            message("Building for Raspberry Pi")
+            #libusb include
+            unix:!android:!macx:LIBS += -lusb-1.0  ##make sure you have the libusb-1.0-0-dev package!
+            unix:!android:!macx:INCLUDEPATH += build_linux/libusb
+            unix:!android:!macx:DEPENDPATH += build_linux/libusb
 
-contains(QT_ARCH, arm) {
-        message("Building for Raspberry Pi")
-        #libusb include
-        unix:!android:!macx:LIBS += -lusb-1.0  ##make sure you have the libusb-1.0-0-dev package!
-        unix:!android:!macx:INCLUDEPATH += build_linux/libusb
-        unix:!android:!macx:DEPENDPATH += build_linux/libusb
-
-        #libdfuprog include
-        unix:!android:!macx:LIBS += -L$$PWD/build_linux/libdfuprog/lib/arm -ldfuprog-0.9
-        unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux/libdfuprog/include
-        unix:!android:!macx:DEPENDPATH += $$PWD/build_linux/libdfuprog/include
-        QMAKE_CFLAGS += -fsigned-char
-        QMAKE_CXXFLAGS += -fsigned-char
-        DEFINES += "PLATFORM_RASPBERRY_PI"
-        #All ARM-Linux GCC treats char as unsigned by default???
-} else {
-    contains(QT_ARCH, i386) {
-        message("Building for Linux (x86)")
-        unix:!android:!macx:LIBS += -lusb-1.0  ##make sure you have the libusb-1.0-0-dev package!
-        unix:!android:!macx:INCLUDEPATH += build_linux/libusb
-        unix:!android:!macx:DEPENDPATH += build_linux/libusb
-
-        #libdfuprog include
-        unix:!android:!macx:LIBS += -L$$PWD/build_linux/libdfuprog/lib/x86 -ldfuprog-0.9
-        unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux/libdfuprog/include
-        unix:!android:!macx:DEPENDPATH += $$PWD/build_linux/libdfuprog/include
+            #libdfuprog include
+            unix:!android:!macx:LIBS += -L$$PWD/build_linux/libdfuprog/lib/arm -ldfuprog-0.9
+            unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux/libdfuprog/include
+            unix:!android:!macx:DEPENDPATH += $$PWD/build_linux/libdfuprog/include
+            QMAKE_CFLAGS += -fsigned-char
+            QMAKE_CXXFLAGS += -fsigned-char
+            DEFINES += "PLATFORM_RASPBERRY_PI"
+            #All ARM-Linux GCC treats char as unsigned by default???
     } else {
-        message("Building for Linux (x64)")
-        #libusb include
-        unix:!android:!macx:LIBS += -Lbuild_linux/libusb -lusb-1.0  ##I suspect the -L here does nothing!
-        unix:!android:!macx:INCLUDEPATH += build_linux/libusb
-        unix:!android:!macx:DEPENDPATH += build_linux/libusb
+        contains(QT_ARCH, i386) {
+            message("Building for Linux (x86)")
+            unix:!android:!macx:LIBS += -lusb-1.0  ##make sure you have the libusb-1.0-0-dev package!
+            unix:!android:!macx:INCLUDEPATH += build_linux/libusb
+            unix:!android:!macx:DEPENDPATH += build_linux/libusb
 
-        #libdfuprog include
-        unix:!android:!macx:LIBS += -L$$PWD/build_linux/libdfuprog/lib/x64 -ldfuprog-0.9
-        unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux/libdfuprog/include
-        unix:!android:!macx:DEPENDPATH += $$PWD/build_linux/libdfuprog/include
+            #libdfuprog include
+            unix:!android:!macx:LIBS += -L$$PWD/build_linux/libdfuprog/lib/x86 -ldfuprog-0.9
+            unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux/libdfuprog/include
+            unix:!android:!macx:DEPENDPATH += $$PWD/build_linux/libdfuprog/include
+        } else {
+            message("Building for Linux (x64)")
+            #libusb include
+            unix:!android:!macx:LIBS += -Lbuild_linux/libusb -lusb-1.0  ##I suspect the -L here does nothing!
+            unix:!android:!macx:INCLUDEPATH += build_linux/libusb
+            unix:!android:!macx:DEPENDPATH += build_linux/libusb
+
+            #libdfuprog include
+            unix:!android:!macx:LIBS += -L$$PWD/build_linux/libdfuprog/lib/x64 -ldfuprog-0.9
+            unix:!android:!macx:INCLUDEPATH += $$PWD/build_linux/libdfuprog/include
+            unix:!android:!macx:DEPENDPATH += $$PWD/build_linux/libdfuprog/include
+        }
     }
 }
 
