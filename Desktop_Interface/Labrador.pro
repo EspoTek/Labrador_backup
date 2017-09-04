@@ -16,7 +16,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 TARGET = Labrador
 TEMPLATE = app
 
-QCP_VER = 1
+QCP_VER = 2
 DEFINES += "QCP_VER=$${QCP_VER}"
 equals(QCP_VER,"2"){
     DEFINES += QCUSTOMPLOT_USE_OPENGL
