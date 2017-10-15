@@ -3,6 +3,10 @@ This is the project page for the EspoTek Labrador.
 http://espotek.com/labrador
 https://www.crowdsupply.com/espotek/labrador
 
+# Documentation and Binary
+All documentation and binary files are currently hosted here:
+https://drive.google.com/drive/u/0/folders/0B7U0ulRLHf8cRVBkeFc2SHpUOGs
+
 # Licence
 All software files are licenced under GNU GPL v3.  https://www.gnu.org/licenses/gpl.html
 
